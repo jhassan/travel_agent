@@ -26,7 +26,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Unique Travel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <!-- <link href="/css/app.css" rel="stylesheet"> -->
@@ -88,89 +88,34 @@
                     <li class="current"><a href="/home"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
                     <li class="submenu current {{ Request::is('parties') ? 'open' : '' }} {{ Request::is('parties/add') ? 'open' : '' }}">
                          <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Party Management
+                            <i class="glyphicon glyphicon-list"></i> Manage Vendor/Client
                             <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/parties/add">Add Party</a></li>
-                            <li><a href="/parties">View/Edit Party</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu current {{ Request::is('products') ? 'open' : '' }} {{ Request::is('products/add') ? 'open' : '' }}">
-                         <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> products Management
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li class="current"><a href="/products/add">Add Product</a></li>
-                            <li><a href="/products">View/Edit Product</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu current {{ Request::is('purchase_stock') ? 'open' : '' }} {{ Request::is('purchase_stock/add') ? 'open' : '' }}">
-                         <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Stock Purchase Management
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li class="current"><a href="/purchase_stock/add">Add Stock Purchase</a></li>
-                            <li><a href="/purchase_stock">View/Edit Stock Purchase</a></li>
+                            <li class="current"><a href="/parties/add">Create Vendor/Client</a></li>
+                            <li><a href="/parties">View/Edit Vendor/Client</a></li>
                         </ul>
                     </li>
                     <li class="submenu current {{ Request::is('sale_voucher') ? 'open' : '' }}">
                          <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Vouchers Management
+                            <i class="glyphicon glyphicon-list"></i> Manage Vouchers
                             <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/vouchers/sale_voucher">Sale Vouchers</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu current {{ Request::is('sale_stock') ? 'open' : '' }} {{ Request::is('sale_stock/add') ? 'open' : '' }}">
-                         <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Stock Sale Management
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li class="current"><a href="/sale_stock/add">Add Stock Sale</a></li>
-                            <li><a href="/sale_stock">View/Edit Stock Purchase</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu current {{ Request::is('list_price') ? 'open' : '' }}">
-                         <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> List Price Management
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li class="current"><a href="/list_price">Update List Price</a></li>
+                            <li class="current"><a href="/vouchers/sale_voucher">Create Sale Vouchers</a></li>
                         </ul>
                     </li>
                     <li class="submenu current {{ Request::is('accounts') ? 'open' : '' }} {{ Request::is('accounts/frm_ledger') ? 'open' : '' }} {{ Request::is('accounts/view_ledger') ? 'open' : '' }} {{ Request::is('accounts/list_transections') ? 'open' : '' }}">
                          <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Accounts Management
+                            <i class="glyphicon glyphicon-list"></i> Manage Accounts
                             <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->
                          <ul>
                             <li class="current"><a href="/accounts/list_transections">List of Transections</a></li>
                             <li class="current"><a href="/accounts/frm_ledger">Journal Ledger</a></li>
-                        </ul>
-                    </li>
-                    <li class="submenu current {{ Request::is('reports') ? 'open' : '' }} {{ Request::is('reports/view_purchase_stock') ? 'open' : '' }} {{ Request::is('reports/view_sale_stock') ? 'open' : '' }} {{ Request::is('reports/view_today_stock') ? 'open' : '' }}">
-                         <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Reports Management
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li class="current"><a href="/reports/view_purchase_stock">Purchase Stock</a></li>
-                            <li><a href="/reports/view_sale_stock">Sale Stock</a></li>
-                            <li><a href="/reports/view_today_stock">Today Stock</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -185,7 +130,7 @@
          <div class="container">
          
             <div class="copy text-center">
-               Copyright {{ date("Y") }} <a href='#'>Rehmat and Sons</a>
+               Copyright {{ date("Y") }} <a href='#'>{{ config('app.name') }}</a>
             </div>
             
          </div>

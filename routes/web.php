@@ -93,6 +93,7 @@ Route::group(
 Route::group(
   array('prefix' => '/vouchers','before' => ''), function () {
       Route::get('sale_voucher', array('as' => 'sale_voucher', 'uses' => 'VoucherController@sale_voucher'));
+      Route::post('add_sale', 'VoucherController@create');
   });
 
 
