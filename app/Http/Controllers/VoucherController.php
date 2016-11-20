@@ -16,6 +16,10 @@ use App\SaleVouchers;
 use App\COA;
 use Redirect;
 use Auth;
+use Mailgun\Mailgun;
+use Mail;
+use App\User;
+use App\Http\Controllers\Controller;
 
 class VoucherController extends Controller
 {
@@ -112,6 +116,32 @@ class VoucherController extends Controller
                             "coa_credit" => $tran["credit"]);
                 SaleVouchersDetails::insert($arrayInsertDetail);
             }
+            # Instantiate the client.
+            $mgClient = new Mailgun('key-42c33cc07ac38fc3899e444d4327133b');
+            $domain = "sandboxef6727ca13534f9082db6dd43df24fbc.mailgun.org";
+            $user = DB::table('users')->where('id', $data->user_id)->first();
+            $html = View::make('emails.reminder',compact('user'))->render();
+            # Make the call to the client.
+            $result = $mgClient->sendMessage("$domain",
+                              array('from'    => 'Mailgun Sandbox <postmaster@sandboxef6727ca13534f9082db6dd43df24fbc.mailgun.org>',
+                                    'to'      => 'Jawad Hassan <jawadjee0519@gmail.com>',
+                                    'subject' => 'Hello Jawad Hassan',
+                                    'html'    => $html//,
+                                    // 'text'    => 'Congratulations Jawad Hassan, you just sent an email with Mailgun!  
+                                    // You are truly awesome!  You can see a record of this email in your logs: 
+                                    // https://mailgun.com/cp/log .  You can send up to 300 emails/day from this 
+                                    // sandbox server.  Next, you should add your own domain so you can 
+                                    // send 10,000 emails/month for free.'
+                                    ));
+            //$user = User::findOrFail($data->user_id);
+            // $user = DB::table('users')->where('id', $data->user_id)->first();
+
+            // Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+            //     $m->from('postmaster@sandboxef6727ca13534f9082db6dd43df24fbc.mailgun.org', 'Hello Jawad Hassan');
+
+            //     $m->to($user->email, $user->name)->subject('Your Reminder for Email!');
+            // });
+
             Session::flash('sale_voucher_message', "Sale voucher added successfully!");
             return Redirect::back();
         }
