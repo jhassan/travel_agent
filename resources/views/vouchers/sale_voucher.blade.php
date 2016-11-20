@@ -12,11 +12,11 @@
 		        </ul>
 		    </div>
 		@endif
-		@if (Session::has('purchase_message'))
-		   <div class="alert alert-info">{{ Session::get('purchase_message') }}</div>
+		@if (Session::has('sale_voucher_message'))
+		   <div class="alert alert-info">{{ Session::get('sale_voucher_message') }}</div>
 		@endif
 		<div class="panel-body">
-			<form role="form" id="purchase_form" method="POST" action="">
+			<form role="form" id="sale_vouchers_form" method="POST" action="{{ url('/vouchers/add_sale') }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 			<fieldset>
 				<div class="panel-heading">
@@ -72,10 +72,10 @@
 					<label>Actual Value</label>
 					<div class="clear"></div>
 					<div class="form-group col-sm-2" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Fare</div>
-					<div class="form-group col-sm-10"><input class="form-control number_only" placeholder="Basic Fare" maxlength="10" name="basic_fare" id="basic_fare" type="text" value="0"></div>
+					<div class="form-group col-sm-10"><input class="form-control number_only focus_blur" placeholder="Basic Fare" maxlength="10" name="basic_fare" id="basic_fare" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-2" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Tax</div>
-					<div class="form-group col-sm-10"><input class="form-control number_only" placeholder="Tax" maxlength="7" name="tax" id="tax" type="text" value="0"></div>
+					<div class="form-group col-sm-10"><input class="form-control number_only focus_blur" placeholder="Tax" maxlength="7" name="tax" id="tax" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-2" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Total</div>
 					<div class="form-group col-sm-10"><input style="background-color: #e5e5e5; font-weight: bold;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" name="actual_fare_total" id="actual_fare_total" type="text" value="0"><input type="hidden" id="hdn_actual_fare_total" name="actual_fare_total" value="0"></div>
@@ -84,37 +84,37 @@
 					<label style="text-align: center !important;"><a style="cursor:pointer;" data-rel="collapse" id="refresh_vendor"><i class="glyphicon glyphicon-refresh"></i></a>&nbsp;&nbsp;&nbsp;Vendor / Payable</label>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Receive Comm.</div>
-					<div class="form-group col-sm-3"><input placeholder="%" class="form-control number_only col-sm-1 small_box" maxlength="2" name="ven_percent_rec_comm" id="ven_percent_rec_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input class="form-control number_only col-sm-1" maxlength="2" name="vendor_rec_comm_total" id="vendor_rec_comm_total" type="text" value="0"></div>
+					<div class="form-group col-sm-3"><input placeholder="%" class="form-control number_only focus_blur col-sm-1 small_box" maxlength="2" name="ven_percent_rec_comm" id="ven_percent_rec_comm" type="text" value=""></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Receive Comm." class="form-control focus_blur number_only col-sm-1" maxlength="2" name="vendor_rec_comm_total" id="vendor_rec_comm_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Give PSF</div>
-					<div class="form-group col-sm-3"><input placeholder="%" class="form-control number_only col-sm-1 small_box" maxlength="2" name="ven_give_psf_comm" id="ven_give_psf_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input class="form-control number_only col-sm-1" maxlength="2" name="ven_give_psf_total" id="ven_give_psf_total" type="text" value="0"></div>
+					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="ven_give_psf_comm" id="ven_give_psf_comm" type="text" value=""></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Give PSF" class="form-control focus_blur number_only col-sm-1" maxlength="2" name="ven_give_psf_total" id="ven_give_psf_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">WHT</div>
-					<div class="form-group col-sm-3"><input placeholder="%" class="form-control number_only col-sm-1 small_box" maxlength="2" name="ven_wht_percent_comm" id="ven_wht_percent_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input class="form-control number_only col-sm-1" maxlength="2" name="ven_wht_total" id="ven_wht_total" type="text" value="0"></div>
+					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="ven_wht_percent_comm" id="ven_wht_percent_comm" type="text" value=""></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="WHT" class="form-control focus_blur number_only col-sm-1" maxlength="2" name="ven_wht_total" id="ven_wht_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-2" style="padding:0px; margin-bottom:0px; margin-top: 8px;"></div>
-					<div class="form-group col-sm-8 text-right" style="float:right;"><input style="background-color: #e5e5e5; font-weight: bold;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" name="ven_main_total" id="ven_main_total" type="text" value="0"><input type="hidden" name="ven_main_total" id="hdn_ven_main_total" value=""></div>
+					<div class="form-group col-sm-8 text-right" style="float:right;"><input placeholder="" style="background-color: #e5e5e5; font-weight: bold;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" name="ven_main_total" id="ven_main_total" type="text" value="0"><input type="hidden" name="ven_main_total" id="hdn_ven_main_total" value="0"></div>
 				</div>
 				<div class="form-group col-sm-4 text-center">
 					<label style="text-align: center !important;"><a style="cursor:pointer;" data-rel="collapse" id="refresh_client"><i class="glyphicon glyphicon-refresh"></i></a>&nbsp;&nbsp;&nbsp;Client / Receivable</label>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Give Comm.</div>
-					<div class="form-group col-sm-3"><input placeholder="%" class="form-control number_only col-sm-1 small_box" maxlength="2" name="client_percent_rec_comm" id="client_percent_rec_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input class="form-control number_only col-sm-1" maxlength="2" name="client_rec_comm_total" id="client_rec_comm_total" type="text" value="0"></div>
+					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="client_percent_rec_comm" id="client_percent_rec_comm" type="text" value=""></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Give Comm." class="form-control focus_blur number_only col-sm-1" maxlength="2" name="client_rec_comm_total" id="client_rec_comm_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Receive PSF</div>
-					<div class="form-group col-sm-3"><input placeholder="%" class="form-control number_only col-sm-1 small_box" maxlength="2" name="client_receive_psf_comm" id="client_receive_psf_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input class="form-control number_only col-sm-1" maxlength="2" name="client_receive_psf_total" id="client_receive_psf_total" type="text" value="0"></div>
+					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="client_receive_psf_comm" id="client_receive_psf_comm" type="text" value=""></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Receive PSF" class="form-control focus_blur number_only col-sm-1" maxlength="2" name="client_receive_psf_total" id="client_receive_psf_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">WHT</div>
-					<div class="form-group col-sm-3"><input placeholder="%" class="form-control number_only col-sm-1 small_box" maxlength="2" name="client_percent_comm" id="client_percent_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input class="form-control number_only col-sm-1" maxlength="2" name="client_wht_total" id="client_wht_total" type="text" value="0"></div>
+					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="client_wht_percent_comm" id="client_wht_percent_comm" type="text" value=""></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="WHT" class="form-control focus_blur number_only col-sm-1" maxlength="2" name="client_wht_total" id="client_wht_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-2" style="padding:0px; margin-bottom:0px; margin-top: 8px;"></div>
-					<div class="form-group col-sm-8 text-right" style="float:right;"><input style="background-color: #e5e5e5; font-weight: bold;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" id="client_main_total" type="text" value="0"><input type="hidden" name="client_main_total" id="hdn_client_main_total" value="0"></div>
+					<div class="form-group col-sm-8 text-right" style="float:right;"><input placeholder="" style="background-color: #e5e5e5; font-weight: bold;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" id="client_main_total" type="text" value="0"><input type="hidden" name="client_main_total" id="hdn_client_main_total" value="0"></div>
 				</div>
 				<div class="clear"></div>
 				<div class="panel-heading">
@@ -134,7 +134,7 @@
 						  <div data-value="2">Sale Party</div>
 						</div>
   					</div>
-  					<div class="form-group col-sm-12 text-right"><input style="background-color: #e5e5e5; font-weight: bold; margin-top: 10px;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" name="basic_fare" type="text" value="0"></div>
+  					<div class="form-group col-sm-12 text-right"><input style="background-color: #e5e5e5; font-weight: bold; margin-top: 10px;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" id="vendor_payable_amount" type="text" value="0"><input class="form-control number_only" name="vendor_payable_amount" id="hdn_vendor_payable_amount" type="hidden" value="0"></div>
 				</div>
 				<div class="form-group col-sm-4 text-center">
 					<div>
@@ -144,7 +144,7 @@
 						  <div data-value="1">Purchase Party</div>
 						  <div data-value="2">Sale Party</div>
 						</div>
-						<div class="form-group col-sm-12 text-right"><input style="background-color: #e5e5e5; font-weight: bold; margin-top: 10px;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" name="basic_fare" type="text" value="0"></div>
+						<div class="form-group col-sm-12 text-right"><input style="background-color: #e5e5e5; font-weight: bold; margin-top: 10px;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" id="client_receivable_amount" type="text" value="0"><input class="form-control number_only" name="client_receivable_amount" id="hdn_client_receivable_amount" type="hidden" value="0"></div>
   					</div>
 				</div>
 			</fieldset>
@@ -182,6 +182,11 @@
 	<script type="text/javascript">
 	$(document).ready(function (){
 		$("#party_id").removeClass('hide');
+
+		// submit form
+		$("#submit_button").click(function (){
+			$("#sale_vouchers_form").submit();
+		});
 	
 		// Show hide datapicker
 		$("#radio_two_way").click(function () {
@@ -225,21 +230,21 @@
 		$("#client_receive_psf_comm").click(function (){
 			$("#client_percent_rec_comm").attr("disabled","disabled");
 			$("#client_rec_comm_total").attr("disabled","disabled");
-			$("#client_percent_comm").attr("disabled","disabled");
+			$("#client_wht_percent_comm").attr("disabled","disabled");
 			$("#client_wht_total").attr("disabled","disabled");
 		});
 		// refresh client
 		$("#refresh_client").click(function (){
 			$("#client_percent_rec_comm").removeAttr("disabled","disabled");
 			$("#client_rec_comm_total").removeAttr("disabled","disabled");
-			$("#client_percent_comm").removeAttr("disabled","disabled");
+			$("#client_wht_percent_comm").removeAttr("disabled","disabled");
 			$("#client_wht_total").removeAttr("disabled","disabled");
 			$("#client_receive_psf_comm").removeAttr("disabled","disabled");
 			$("#client_receive_psf_total").removeAttr("disabled","disabled");
 
 			$("#client_percent_rec_comm").val('');
 			$("#client_rec_comm_total").val(0);
-			$("#client_percent_comm").val('');
+			$("#client_wht_percent_comm").val('');
 			$("#client_wht_total").val(0);
 			$("#client_receive_psf_comm").val('');
 			$("#client_receive_psf_total").val(0);
@@ -258,13 +263,25 @@
 				var tax = $("#tax").val();
 				tax = remove_comma(tax);
 				var total_fare = parseInt(tax) + parseInt(basic_fare);
-				$("#actual_fare_total").val(addCommas(total_fare));	
+				if(isNaN(total_fare))
+				{
+					$("#actual_fare_total").val(0);	
+					$("#hdn_actual_fare_total").val(0);	
+				}
+					
+				else
+				{
+					$("#actual_fare_total").val(addCommas(total_fare));
+					$("#hdn_actual_fare_total").val(addCommas(total_fare));
+				}
 			}
 			else
 			{
 				$("#actual_fare_total").val(0);
+				$("#hdn_actual_fare_total").val(0);
 			}
-			
+			// calculate profit and loss
+			profit_loss(0);
 		});
 		// calculate actual value tax
 		$("#tax").keyup(function (){
@@ -275,7 +292,10 @@
 				var basic_fare = $("#basic_fare").val();
 				basic_fare = remove_comma(basic_fare);
 				var total_fare = parseInt(tax) + parseInt(basic_fare);
-				$("#actual_fare_total").val(addCommas(numberFormat(total_fare)));	
+				if(isNaN(total_fare))
+					$("#actual_fare_total").val(0);	
+				else
+					$("#actual_fare_total").val(addCommas(total_fare));	
 			}
 			else
 			{
@@ -291,28 +311,31 @@
 				var ven_percent_rec_comm = remove_comma(ven_percent_rec_comm);
 				var basic_fare = $("#basic_fare").val();
 				basic_fare = remove_comma(basic_fare);
-				console.log(basic_fare+"***"+ven_percent_rec_comm);
+				//console.log(basic_fare+"***"+ven_percent_rec_comm);
 				var vendor_rec_comm_total = parseInt(ven_percent_rec_comm) / 100 * basic_fare;
 				if(vendor_rec_comm_total != "" && vendor_rec_comm_total != null && vendor_rec_comm_total != "NaN")
 				{
 					var vendor_rec_comm_total = numberFormat(vendor_rec_comm_total,"");
 					vendor_rec_comm_total = addCommas(vendor_rec_comm_total);
 					$("#vendor_rec_comm_total").val(vendor_rec_comm_total);
-					$("#ven_main_total").val(vendor_rec_comm_total);	
+					$("#ven_main_total").val(vendor_rec_comm_total);
+					$("#hdn_ven_main_total").val(vendor_rec_comm_total);
 				}
 			}
 			else
 			{
 				$("#vendor_rec_comm_total").val(0);
 				$("#ven_main_total").val(0);
+				$("#hdn_ven_main_total").val(0);
 			}
-			
+			// calculate profit and loss
+			profit_loss(0);
 		});
 		// vendor WHT
-		$("#ven_wht_percent_comm").keyup(function () {
+		$("#ven_wht_percent_comm").keyup(function (event) {
 			vendor_rec_comm_total = 0;
 			var ven_wht_percent_comm = $(this).val();
-			if(ven_wht_percent_comm != "" && ven_wht_percent_comm != null && ven_wht_percent_comm != "NaN")
+			if(ven_wht_percent_comm != "" && ven_wht_percent_comm != null && ven_wht_percent_comm != "NaN" && event.keyCode != 8)
 			{
 				var vendor_rec_comm_total = $("#vendor_rec_comm_total").val();
 				vendor_rec_comm_total = remove_comma(vendor_rec_comm_total);
@@ -327,22 +350,28 @@
 				var ven_main_total = $("#ven_main_total").val();
 				ven_main_total = remove_comma(ven_main_total);
 				vendor_rec_comm_total = remove_comma(vendor_rec_comm_total);
-				console.log(ven_main_total+"****"+vendor_rec_comm_total);
 				setTimeout(function (){
 					main_vendor_total = 0;
 					var main_vendor_total = parseInt(ven_main_total) + parseInt(vendor_rec_comm_total);
 					main_vendor_total = numberFormat(main_vendor_total,"");
 					main_vendor_total = addCommas(main_vendor_total);
 					$("#ven_main_total").val(main_vendor_total);
-				},2000);
-				
+					$("#hdn_ven_main_total").val(main_vendor_total);
+					// calculate profit and loss
+					profit_loss(1);
+					grand_totals('v')
+				},1000);
 			}
 			else
 			{
 				$("#ven_wht_total").val(0);
 				var vendor_rec_comm_total = $("#vendor_rec_comm_total").val();
 				$("#ven_main_total").val(vendor_rec_comm_total);
+				// calculate profit and loss
+				profit_loss(0);
+				grand_totals('v')
 			}
+			
 		});
 		
 		// Vendor PSF
@@ -362,10 +391,192 @@
 					ven_give_psf_comm = addCommas(ven_give_psf_comm);
 					$("#ven_give_psf_total").val(ven_give_psf_comm);
 					$("#ven_main_total").val(ven_give_psf_comm);
+					$("#hdn_ven_main_total").val(ven_give_psf_comm);
+					// calculate profit and loss
+					profit_loss(0);
+					grand_totals('v')
+				}
+
+			}
+
+		});
+
+		// calculate Client Give commisaion
+		$("#client_percent_rec_comm").keyup(function (){
+			var client_percent_rec_comm = $(this).val();
+			if(client_percent_rec_comm != "" && client_percent_rec_comm != null && client_percent_rec_comm != "NaN")
+			{
+				var client_percent_rec_comm = remove_comma(client_percent_rec_comm);
+				var basic_fare = $("#basic_fare").val();
+				basic_fare = remove_comma(basic_fare);
+				console.log(basic_fare+"***"+ven_percent_rec_comm);
+				var client_rec_comm_total = parseInt(client_percent_rec_comm) / 100 * basic_fare;
+				if(client_rec_comm_total != "" && client_rec_comm_total != null && client_rec_comm_total != "NaN")
+				{
+					var client_rec_comm_total = numberFormat(client_rec_comm_total,"");
+					client_rec_comm_total = addCommas(client_rec_comm_total);
+					$("#client_rec_comm_total").val(client_rec_comm_total);
+					$("#client_main_total").val(client_rec_comm_total);	
+					$("#hdn_client_main_total").val(client_rec_comm_total);	
+				}
+			}
+			else
+			{
+				$("#client_rec_comm_total").val(0);
+				$("#client_main_total").val(0);
+				$("#hdn_client_main_total").val(0);
+			}
+			
+		});
+
+		// Client WHT
+		$("#client_wht_percent_comm").keyup(function (event) {
+			client_rec_comm_total = 0;
+			var client_wht_percent_comm = $(this).val();
+			if(client_wht_percent_comm != "" && client_wht_percent_comm != null && client_wht_percent_comm != "NaN" && event.keyCode != 8)
+			{
+				var client_rec_comm_total = $("#client_rec_comm_total").val();
+				client_rec_comm_total = remove_comma(client_rec_comm_total);
+				var client_rec_comm_total = parseInt(client_wht_percent_comm) / 100 * client_rec_comm_total;
+				if(client_rec_comm_total != "" && client_rec_comm_total != null && client_rec_comm_total != "NaN")
+				{
+					client_rec_comm_total = numberFormat(client_rec_comm_total,"");
+					client_rec_comm_total = addCommas(client_rec_comm_total);
+					$("#client_wht_total").val(client_rec_comm_total);
+				}
+				client_main_total = 0;
+				var client_main_total = $("#client_main_total").val();
+				client_main_total = remove_comma(client_main_total);
+				client_rec_comm_total = remove_comma(client_rec_comm_total);
+				setTimeout(function (){
+					main_client_total = 0;
+					var main_client_total = parseInt(client_main_total) + parseInt(client_rec_comm_total);
+					main_client_total = numberFormat(main_client_total,"");
+					main_client_total = addCommas(main_client_total);
+					$("#client_main_total").val(main_client_total);
+					$("#hdn_client_main_total").val(main_client_total);
+					// calculate profit and loss
+					profit_loss(1);
+					grand_totals('c')
+				},1000);
+			}
+			else
+			{
+				$("#client_wht_total").val(0);
+				var client_rec_comm_total = $("#client_rec_comm_total").val();
+				$("#client_main_total").val(client_rec_comm_total);
+				// calculate profit and loss
+				profit_loss(0);
+				grand_totals('c')
+			}
+		});
+		
+		// Client PSF
+		$("#client_receive_psf_comm").click(function (){
+			$("#client_main_total").val(0)
+		});
+		$("#client_receive_psf_comm").keyup(function (){
+			var client_receive_psf_comm = $(this).val();
+			if(client_receive_psf_comm != "" && client_receive_psf_comm != null && client_receive_psf_comm != "NaN")
+			{
+				var basic_fare = $("#basic_fare").val();
+				basic_fare = remove_comma(basic_fare);
+				var client_receive_psf_comm = parseInt(client_receive_psf_comm) / 100 * basic_fare;
+				if(client_receive_psf_comm != "" && client_receive_psf_comm != null && client_receive_psf_comm != "NaN")
+				{
+					client_receive_psf_comm = numberFormat(client_receive_psf_comm,"");
+					client_receive_psf_comm = addCommas(client_receive_psf_comm);
+					$("#client_receive_psf_total").val(client_receive_psf_comm);
+					$("#client_main_total").val(client_receive_psf_comm);
+					$("#hdn_client_main_total").val(client_receive_psf_comm);
+					// calculate profit and loss
+					profit_loss(0);
+					grand_totals('c')
 				}
 			}
 
 		});
+		// onfocus and on blur
+		$(".focus_blur").focus(function(){
+		if (this.value == "0")
+		{
+		    this.value = "";
+		 }
+		});
+
+		$(".focus_blur").blur(function(){
+	        if (this.value == "")
+	        {
+	            this.value = "0";
+	        }
+	    });
+
+	    // Profit and Loss
+	    function profit_loss(str){
+	    	
+	    	if(str == 1)
+	    	{
+	    		var vendor_rec_comm_total = $("#vendor_rec_comm_total").val();
+	    		vendor_rec_comm_total = remove_comma(vendor_rec_comm_total);
+	    		var ven_wht_total = $("#ven_wht_total").val();
+	    		ven_wht_total = remove_comma(ven_wht_total);
+	    		ven_main_total = parseInt(vendor_rec_comm_total) + parseInt(ven_wht_total);
+
+	    		var client_rec_comm_total = $("#client_rec_comm_total").val();	
+	    		client_rec_comm_total = remove_comma(client_rec_comm_total);
+	    		var client_wht_total = $("#client_wht_total").val();	
+	    		client_wht_total = remove_comma(client_wht_total);
+	    		client_main_total = parseInt(client_rec_comm_total) + parseInt(client_wht_total);
+	    	}
+	    	else
+	    	{
+	    		var client_main_total = $("#hdn_client_main_total").val();
+	    		var ven_main_total = $("#hdn_ven_main_total").val();
+	    		console.log(client_main_total+"******"+ven_main_total);
+	    		client_main_total = remove_comma(client_main_total);
+	    		ven_main_total = remove_comma(ven_main_total);	
+	    	}
+	    	
+	    	var total_profit_loss = parseInt(client_main_total) - parseInt(ven_main_total);
+	    	//console.log(total_profit_loss);
+	    	if (total_profit_loss < 0)
+	    	{
+	    		$("#profit_loss_total").css('background-color','#d2322d');
+	    		$("#profit_loss_total").css('color','#fff');
+	    	}
+	    	else
+	    	{
+	    		$("#profit_loss_total").css('background-color','#e5e5e5');
+	    		$("#profit_loss_total").css('color','#000');
+	    	}
+	    	total_profit_loss = addCommas(total_profit_loss);
+	    	$("#profit_loss_total").val(total_profit_loss);
+	    	$("#hdn_profit_loss_total").val(total_profit_loss);
+	    }
+
+	    // Total vendor
+	    function grand_totals(user_type)
+	    {
+	    	var actual_fare_total = $("#actual_fare_total").val();
+	    	actual_fare_total = remove_comma(actual_fare_total);
+	    	if(user_type == "v")
+	    	{
+	    		var ven_main_total = $("#ven_main_total").val();
+	    		ven_main_total = remove_comma(ven_main_total);
+	    		var total_vendor = parseInt(actual_fare_total) + parseInt(ven_main_total);
+	    		$("#vendor_payable_amount").val(addCommas(total_vendor));
+	    		$("#hdn_vendor_payable_amount").val(addCommas(total_vendor));
+	    	}
+	    	else
+	    	{
+	    		var client_main_total = $("#client_main_total").val();
+	    		client_main_total = remove_comma(client_main_total);
+	    		var total_client = parseInt(actual_fare_total) + parseInt(client_main_total);
+	    		$("#client_receivable_amount").val(addCommas(total_client));
+	    		$("#hdn_client_receivable_amount").val(addCommas(total_client));
+	    	}
+	    }
+
 	}); // end ready
 	function addCommas(nStr)
 	{
@@ -383,12 +594,10 @@
 	    var multiplier = Math.pow(10, decimalPlaces);
 	    return (Math.round(val * multiplier) / multiplier).toFixed(decimalPlaces);
 	}
-	function remove_comma(number) {
-		if (number.indexOf(",") >= 0)
-			number = number.replace(',', '');
-		if (number.indexOf(",") >= 0)
-			number = number.replace(',', '');
-		return number;	
+	function remove_comma(s) {
+		var s = s.toString();
+		s = s.split(',').join('');
+		return s;	
 	}
 	</script>
 @endsection
