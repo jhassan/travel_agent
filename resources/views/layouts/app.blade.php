@@ -173,7 +173,24 @@
                             <li><a href="/reports/view_today_stock">Today Stock</a></li>
                         </ul>
                     </li>
+
+                    <li class="submenu current {{ Request::is('profiles') ? 'open' : '' }} {{ Request::is('profiles/add') ? 'open' : '' }}">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Profile
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/profiles/add">Add Profile</a></li>
+                            <li><a href="/profiles">View/Edit Profile</a></li>
+                        </ul>
+                    </li>
+
+
                 </ul>
+
+                </ul>
+
              </div>
              <!-- @endif -->
           </div>

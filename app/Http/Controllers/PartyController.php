@@ -27,7 +27,7 @@ class PartyController extends Controller
      */
     public function index()
     {
-        $data = new Party;
+        $data = new Party; //print_r($data->all_parties());
         $arrayParties = $data->all_parties();
         return View('parties.index', compact('arrayParties'));
     }
@@ -42,7 +42,8 @@ class PartyController extends Controller
         $rules = array(
             'name'  => 'required|unique:parties|max:100',
             'phone_no'  => 'unique:parties|max:12',
-            'type_id'  => 'required'
+            'type_id'  => 'required',
+			'account_id'  => 'required'
         );
 
         // Create a new validator instance from our validation rules
@@ -55,6 +56,10 @@ class PartyController extends Controller
         $data = new Party();
         
         $data->name = Input::get('name');
+		$data->code = Input::get('code');
+		$data->ptcl_no = Input::get('ptcl_no');
+		$data->email = Input::get('email');
+		$data->account_id = Input::get('account_id');
         $data->address = Input::get('address');
         $data->phone_no = Input::get('phone_no');
         $data->city = Input::get('city');
@@ -167,6 +172,10 @@ class PartyController extends Controller
         $data = new Party();
         
         $data->name = Input::get('name');
+		$data->code = Input::get('code');
+		$data->ptcl_no = Input::get('ptcl_no');
+		$data->email = Input::get('email');
+		$data->account_id = Input::get('account_id');
         $data->address = Input::get('address');
         $data->phone_no = Input::get('phone_no');
         $data->city = Input::get('city');
@@ -181,6 +190,10 @@ class PartyController extends Controller
             'phone_no' => $data->phone_no,
             'city' => $data->city,
             'type_id' => $data->type_id,
+			'account_id'=> $data->account_id,
+			'code'=> $data->code,
+			'ptcl_no'=> $data->ptcl_no,
+			'email'=> $data->email,
             ]);
         COA::where('party_id', $id)->update(
             [

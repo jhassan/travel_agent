@@ -95,5 +95,14 @@ Route::group(
       Route::get('sale_voucher', array('as' => 'sale_voucher', 'uses' => 'VoucherController@sale_voucher'));
   });
 
-
+// Parties
+Route::group(
+  array('prefix' => '/profiles','before' => ''), function () {
+    Route::get('add', array('as' => 'add/profile', 'uses' => 'ProfileController@add'));
+      Route::post('add_new', 'ProfileController@create');
+      Route::get('/', array('as' => 'profile', 'uses' => 'ProfileController@index'));
+      Route::get('{id}/edit', array('as' => 'parties.update', 'uses' => 'ProfileController@edit'));
+      Route::post('{id}/edit', 'ProfileController@update');
+      Route::get('delete_party', array('as'=>'delete_party', 'uses' => 'ProfileController@destroy'));
+  });
 
