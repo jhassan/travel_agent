@@ -23,18 +23,52 @@
 					<label>Name</label>
 					<input class="form-control" maxlength="100" placeholder="Name" name="name" type="text" value="{{ $parties->name }}">
 				</div>
-				<div class="form-group col-sm-3">
-					<label>Address</label>
-					<input class="form-control" placeholder="Address" maxlength="150" name="address" type="text" value="{{ $parties->address }}">
+                
+                <div class="form-group col-sm-3">
+					<label>Code</label>
+					<input class="form-control" maxlength="100" placeholder="Code" name="code" type="text" value="{{ $parties->code }}">
 				</div>
-				<div class="form-group col-sm-3">
+                
+                <div class="form-group col-sm-3">
 					<label>Phone #</label>
 					<input class="form-control number_only" placeholder="Phone #" maxlength="11" name="phone_no" type="text" value="{{ $parties->phone_no }}">
 				</div>
+                
+                <div class="form-group col-sm-3">
+					<label>PTCL #</label>
+					<input class="form-control"  data-mask="099-9999999" data-mask-placeholder="#" placeholder="PTCL #" maxlength="11" name="ptcl_no" type="text" value="{{ $parties->ptcl_no }}">
+				</div>
+                
+                <div class="form-group col-sm-3">
+					<label>Email</label>
+					<input class="form-control" placeholder="Email"  name="email_address" type="text" value="{{ $parties->email }}">
+				</div>
+                
 				<div class="form-group col-sm-3">
 					<label>City</label>
 					<input class="form-control" placeholder="City" maxlength="15" name="city" type="text" value="{{ $parties->city }}">
 				</div>
+                
+                <div class="form-group col-sm-3">
+					<label>Address</label>
+					<input class="form-control" placeholder="Address" maxlength="150" name="address" type="text" value="{{ $parties->address }}">
+				</div>
+                
+                <div class="form-group col-sm-3">
+					<div>
+  						<label>Account</label>
+						<div class="bfh-selectbox" data-name="account_id" data-value="{{ $parties->account_id }}" data-filter="true">
+                      	  <input type="hidden" name="account_id" value="{{ $parties->account_id }}">
+						  <div data-value="">Select Account</div>
+						  <div data-value="1">Bank/Card</div>
+						  <div data-value="2">Clients/Receiveable</div>
+                          <div data-value="2">Vender/Payable</div>
+                          <div data-value="2">Expence</div>
+                          <div data-value="2">Profit &amp; loss</div>
+						</div>
+  					</div>
+				</div>
+                
 				<div class="form-group col-sm-3">
 					<div>
   						<label>Party Type</label>
@@ -60,6 +94,8 @@
 		    </div>
 		</form>
 		</div>
+
+
 
 	</div>
 </div>

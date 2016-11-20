@@ -118,7 +118,35 @@
                             <li class="current"><a href="/accounts/frm_ledger">Journal Ledger</a></li>
                         </ul>
                     </li>
+                    <li class="submenu current {{ Request::is('reports') ? 'open' : '' }} {{ Request::is('reports/view_purchase_stock') ? 'open' : '' }} {{ Request::is('reports/view_sale_stock') ? 'open' : '' }} {{ Request::is('reports/view_today_stock') ? 'open' : '' }}">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Reports Management
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/reports/view_purchase_stock">Purchase Stock</a></li>
+                            <li><a href="/reports/view_sale_stock">Sale Stock</a></li>
+                            <li><a href="/reports/view_today_stock">Today Stock</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu current {{ Request::is('profiles') ? 'open' : '' }} {{ Request::is('profiles/add') ? 'open' : '' }}">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Profile
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/profiles/add">Add Profile</a></li>
+                            <li><a href="/profiles">View/Edit Profile</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
+
+                </ul>
+
              </div>
              <!-- @endif -->
           </div>
