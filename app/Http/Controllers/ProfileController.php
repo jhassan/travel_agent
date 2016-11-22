@@ -45,6 +45,7 @@ class ProfileController extends Controller
             'email'  => 'required',
             'address'  => 'required',
             'website'  => 'required',
+            'ptcl_no'  => 'required',
 			'image'  => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         );
 
@@ -60,6 +61,7 @@ class ProfileController extends Controller
         $data->name = Input::get('name');
 		$data->slogon = Input::get('slogon');
 		$data->cell_no = Input::get('cell_no');
+        $data->ptcl_no = Input::get('ptcl_no');
 		$data->email = Input::get('email');
         $data->address = Input::get('address');
         $data->website = Input::get('website');
@@ -112,6 +114,7 @@ class ProfileController extends Controller
             'email'  => 'required',
             'address'  => 'required',
             'website'  => 'required',
+            'ptcl_no'  => 'required',
             'image'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         );
 
@@ -127,6 +130,7 @@ class ProfileController extends Controller
         $data->name = Input::get('name');
         $data->slogon = Input::get('slogon');
         $data->cell_no = Input::get('cell_no');
+        $data->ptcl_no = Input::get('ptcl_no');
         $data->email = Input::get('email');
         $data->address = Input::get('address');
         $data->website = Input::get('website');
@@ -155,6 +159,7 @@ class ProfileController extends Controller
             'name' => $data->name,
             'address' => $data->address,
             'cell_no' => $data->cell_no,
+            'ptcl_no' => $data->ptcl_no,
             'slogon' => $data->slogon,
             'email' => $data->email,
             'website'=> $data->website,

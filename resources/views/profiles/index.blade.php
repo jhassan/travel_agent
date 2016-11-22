@@ -29,7 +29,7 @@
 					<h5 class="col-md-6">{{ $profile->cell_no }}</h5>
 					<div class="clear"></div>
 					<h5 class="col-md-4"><strong>PTCL #:</h5>
-					<h5 class="col-md-6">{{ $profile->cell_no }}</h5>
+					<h5 class="col-md-6">{{ $profile->ptcl_no }}</h5>
 					<div class="clear"></div>
 					<h5 class="col-md-4"><strong>Website:</h5>
 					<h5 class="col-md-6">{{ $profile->website }}</h5>
