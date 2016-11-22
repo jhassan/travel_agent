@@ -8,21 +8,21 @@ class Profile extends Model
 {
     protected $table = 'profiles';
 
-    public function record($id = null)
+    public function profile_info()
 	{
 		$arrayProfiles = DB::table('profiles')->get();
-
+        return $arrayProfiles;
 	}
 
-	public function image($name){ 
+	// public function image($name){ 
 
-        $image = $name;
-        $destinationPath = public_path(). '/uploads/';
-        $filename = $image->getClientOriginalName();
+ //        $image = $name;
+ //        $destinationPath = public_path(). '/uploads/';
+ //        $filename = $image->getClientOriginalName();
 
-        $file->move($destinationPath, $filename);
+ //        $file->move($destinationPath, $filename);
 
-        return $image;
+ //        return $image;
 
-	}
+	// }
 }

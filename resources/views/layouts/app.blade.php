@@ -86,6 +86,17 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="/home"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                    <li class="submenu current {{ Request::is('profiles') ? 'open' : '' }} {{ Request::is('profiles/add') ? 'open' : '' }}">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Manage Profile
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/profiles/add">Create Profile</a></li>
+                            <li><a href="/profiles">View/Edit Profile</a></li>
+                        </ul>
+                    </li>
                     <li class="submenu current {{ Request::is('parties') ? 'open' : '' }} {{ Request::is('parties/add') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i> Manage Vendor/Client
@@ -118,9 +129,9 @@
                             <li class="current"><a href="/accounts/frm_ledger">Journal Ledger</a></li>
                         </ul>
                     </li>
-                    <li class="submenu current {{ Request::is('reports') ? 'open' : '' }} {{ Request::is('reports/view_purchase_stock') ? 'open' : '' }} {{ Request::is('reports/view_sale_stock') ? 'open' : '' }} {{ Request::is('reports/view_today_stock') ? 'open' : '' }}">
+                    <li class="hide submenu current {{ Request::is('reports') ? 'open' : '' }} {{ Request::is('reports/view_purchase_stock') ? 'open' : '' }} {{ Request::is('reports/view_sale_stock') ? 'open' : '' }} {{ Request::is('reports/view_today_stock') ? 'open' : '' }}">
                          <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Reports Management
+                            <i class="glyphicon glyphicon-list"></i> Manage Reports
                             <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->
@@ -130,19 +141,6 @@
                             <li><a href="/reports/view_today_stock">Today Stock</a></li>
                         </ul>
                     </li>
-
-                    <li class="submenu current {{ Request::is('profiles') ? 'open' : '' }} {{ Request::is('profiles/add') ? 'open' : '' }}">
-                         <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Profile
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li class="current"><a href="/profiles/add">Add Profile</a></li>
-                            <li><a href="/profiles">View/Edit Profile</a></li>
-                        </ul>
-                    </li>
-
                 </ul>
 
                 </ul>

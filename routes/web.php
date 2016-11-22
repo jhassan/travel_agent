@@ -96,7 +96,7 @@ Route::group(
       Route::post('add_sale', 'VoucherController@create');
   });
 
-// Parties
+// Profile
 Route::group(
   array('prefix' => '/profiles','before' => ''), function () {
     Route::get('add', array('as' => 'add/profile', 'uses' => 'ProfileController@add'));
