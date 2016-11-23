@@ -67,7 +67,7 @@ class PartyController extends Controller
         $coa_credit = str_replace(",","",Input::get("coa_credit"));
         $coa_debit = str_replace(",","",Input::get("coa_debit"));
         $party = new Party();
-        if($data->type_id == 1000000)
+        if($data->account_id == 100000)
         {
             $coa_code = $party->get_next_coa('1000');
             //$account_type = 'p';
@@ -98,18 +98,18 @@ class PartyController extends Controller
             $account_type = 's';
         }
         
-        if($data->type_id == 1)
-        {
-            $coa_code = $party->get_next_coa('p');
-            $account_type = 'p';
-        }
-        elseif($data->type_id == 2)
-        {
-            $coa_code = $party->get_next_coa('s');
-            $account_type = 's';
-        }
-        print_r($data);die;
-        $data->save();
+        // if($data->type_id == 1)
+        // {
+        //     $coa_code = $party->get_next_coa('p');
+        //     $account_type = 'p';
+        // }
+        // elseif($data->type_id == 2)
+        // {
+        //     $coa_code = $party->get_next_coa('s');
+        //     $account_type = 's';
+        // }
+        //print_r($data);die;
+        //$data->save();
         if($data->save()){
             $insertedId = $data->id;
             // Create Party COA
@@ -118,7 +118,7 @@ class PartyController extends Controller
                         "coa_account" => Input::get("name"),
                         "coa_credit"  => (int)$coa_credit, 
                         "coa_debit"   => (int)$coa_debit,
-                        "account_type"=> $account_type,
+                        //"account_type"=> $account_type,
                         "party_id"    => (int)$insertedId       
                     );
             COA::insert($arrDataCOA);
