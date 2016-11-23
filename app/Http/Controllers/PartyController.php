@@ -67,9 +67,9 @@ class PartyController extends Controller
         $coa_credit = str_replace(",","",Input::get("coa_credit"));
         $coa_debit = str_replace(",","",Input::get("coa_debit"));
         $party = new Party();
-        if($data->type_id == 1)
+        if($data->type_id == 1000000)
         {
-            $coa_code = $party->get_next_coa('p');
+            $coa_code = $party->get_next_coa('1000');
             $account_type = 'p';
         }
         elseif($data->type_id == 2)
