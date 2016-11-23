@@ -36,6 +36,12 @@
 					<input class="form-control" data-mask="0999-9999999" data-mask-placeholder="#" placeholder="Phone #" maxlength="11" name="cell_no" type="text" value="{{ $arrayProfiles->cell_no}}">
 				</div>
 
+
+				<div class="form-group col-sm-3">
+					<label>Ptcl #</label>
+					<input class="form-control" data-mask="099-9999999" data-mask-placeholder="#" placeholder="Ptcl #" maxlength="11" name="ptcl_no" type="text" value="{{ $arrayProfiles->email}}">
+				</div>
+				
 				<div class="form-group col-sm-3">
 					<label>Email</label>
 					<input class="form-control" placeholder="Email"  name="email" type="text" value="{{ $arrayProfiles->email}}">

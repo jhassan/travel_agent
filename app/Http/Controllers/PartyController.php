@@ -45,7 +45,7 @@ class PartyController extends Controller
             'type_id'  => 'required',
 			'account_id'  => 'required'
         );
-
+//print_r(Input::all());die;
         // Create a new validator instance from our validation rules
         $validator = Validator::make(Input::all(), $rules);
 
@@ -58,7 +58,7 @@ class PartyController extends Controller
         $data->name = Input::get('name');
 		$data->code = Input::get('code');
 		$data->ptcl_no = Input::get('ptcl_no');
-		$data->email = Input::get('email');
+		$data->email = Input::get('email_address');
 		$data->account_id = Input::get('account_id');
         $data->address = Input::get('address');
         $data->phone_no = Input::get('phone_no');
@@ -70,12 +70,27 @@ class PartyController extends Controller
         if($data->type_id == 1000000)
         {
             $coa_code = $party->get_next_coa('1000');
-            $account_type = 'p';
+            //$account_type = 'p';
         }
-        elseif($data->type_id == 2)
+        elseif($data->account_id == 200000)
         {
-            $coa_code = $party->get_next_coa('s');
-            $account_type = 's';
+            $coa_code = $party->get_next_coa('200');
+            // $account_type = 'p';
+        }
+        elseif($data->account_id == 300000)
+        {
+            $coa_code = $party->get_next_coa('300');
+            // $account_type = 'p';
+        }
+        elseif($data->account_id == 400000)
+        {
+            $coa_code = $party->get_next_coa('400');
+            // $account_type = 'p';
+        }
+        elseif($data->account_id == 500000)
+        {
+            $coa_code = $party->get_next_coa('500');
+            // $account_type = 'p';
         }
         else
         {
@@ -83,6 +98,18 @@ class PartyController extends Controller
             $account_type = 's';
         }
         
+        if($data->type_id == 1)
+        {
+            $coa_code = $party->get_next_coa('p');
+            $account_type = 'p';
+        }
+        elseif($data->type_id == 2)
+        {
+            $coa_code = $party->get_next_coa('s');
+            $account_type = 's';
+        }
+        print_r($data);die;
+        $data->save();
         if($data->save()){
             $insertedId = $data->id;
             // Create Party COA
@@ -95,13 +122,15 @@ class PartyController extends Controller
                         "party_id"    => (int)$insertedId       
                     );
             COA::insert($arrDataCOA);
+        if($data->save()){
             Session::flash('message', "Party added successfully!");
             return Redirect::back();
         }
         else{
-            return Redirect::back()->with('error', 'Error message');;
+            return Redirect::back()->with('error', 'Error message');
         }
     }
+}
 
     public function add()
     {

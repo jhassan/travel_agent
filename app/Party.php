@@ -23,7 +23,9 @@ class Party extends Model
 		$arrayCoa = DB::table('coa')
 					  ->where('coa_code', DB::raw("(select max(`coa_code`) from coa where coa_code like '".$value."%')"))
 					  ->get();
+					  //print_r($arrayCoa);die;
 		$coa = $arrayCoa[0]->coa_code;
+//print_r($coa); die;
 		return $coa + 1;			  
 	}
 
