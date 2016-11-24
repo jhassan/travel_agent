@@ -118,7 +118,7 @@ class PartyController extends Controller
                         "coa_account" => Input::get("name"),
                         "coa_credit"  => (int)$coa_credit, 
                         "coa_debit"   => (int)$coa_debit,
-                        //"account_type"=> $account_type,
+                        //"account_type"=> $account_id,
                         "party_id"    => (int)$insertedId       
                     );
             COA::insert($arrDataCOA);

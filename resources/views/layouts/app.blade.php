@@ -108,7 +108,7 @@
                             <li><a href="/parties">View/Edit Vendor/Client</a></li>
                         </ul>
                     </li>
-                    <li class="submenu current {{ Request::is('sale_voucher') ? 'open' : '' }}">
+                    <li class="submenu current {{ Request::is('sale_voucher') ? 'open' : '' }} {{ Request::is('list_sale_voucher') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i> Manage Vouchers
                             <span class="caret pull-right"></span>
@@ -116,6 +116,7 @@
                          <!-- Sub menu -->
                          <ul>
                             <li class="current"><a href="/vouchers/sale_voucher">Create Sale Vouchers</a></li>
+                            <li class="current"><a href="/vouchers/list_sale_voucher">List Sale Vouchers</a></li>
                         </ul>
                     </li>
                     <li class="submenu current {{ Request::is('accounts') ? 'open' : '' }} {{ Request::is('accounts/frm_ledger') ? 'open' : '' }} {{ Request::is('accounts/view_ledger') ? 'open' : '' }} {{ Request::is('accounts/list_transections') ? 'open' : '' }}">

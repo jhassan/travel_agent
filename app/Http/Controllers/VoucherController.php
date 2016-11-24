@@ -20,6 +20,7 @@ use Mailgun\Mailgun;
 use Mail;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Voucher;
 
 class VoucherController extends Controller
 {
@@ -155,5 +156,25 @@ class VoucherController extends Controller
     {   
         $value = str_replace(",", "", $value);
         return str_replace(",", "", $value);
+    }
+
+    public function list_sale_voucher()
+    {
+        $voucher_data = new Voucher;
+        $arrayVouchers = $voucher_data->all_vouchers();
+        return View('vouchers.list_sale_voucher', compact('arrayVouchers'));
+    }
+
+
+    public function edit_list_voucher($id)
+    { 
+        try {
+            $voucher = DB::table('sale_vouchers')->where('id', $id)->first();
+            // print_r($voucher);die;
+            return View('vouchers.edit_sale_voucher', compact('voucher'));
+        }
+        catch (TestimonialNotFoundException $e) {
+            return Redirect::route('parties.edit')->with('error', 'Error Message');
+        }
     }
 }
