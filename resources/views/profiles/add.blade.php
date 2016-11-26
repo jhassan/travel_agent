@@ -49,11 +49,13 @@
 				<div class="form-group col-sm-3">
 					<label>Address</label>
 					<input class="form-control" placeholder="Address" maxlength="150" name="address" type="text" value="">
+					<span class="hidden hidden_email text-danger">Please Enter correct email address</span>
 				</div>
 
 				<div class="form-group col-sm-3">
 					<label>website</label>
 					<input class="form-control" placeholder="Website" name="website" id="website" type="text" value="">
+					<span class="hidden hidden_website text-danger">Invalid website/domain name!</span>
 				</div>
 				<dir class="clear"></dir>
 				<div class="form-group col-sm-3">
@@ -73,18 +75,24 @@
 	<script type="text/javascript">
 	$(document).ready(function (){
 		// submit form
-		$("#submit_button").click(function (){
-		var doma = $('#website').val();
-        if(!/^(http(s)?\/\/:)?(www\.)?[a-zA-Z\-]{3,}(\.(com|net|org))?$/.test(doma))
-        {
-            alert('invalid website/domain name!');
-            return false;
-        }
-        else	
-			$("#profile_form").submit();
-		});
-	}); // end ready
+		$("#submit_button").click(function (){//console.log('fawad');return false;
+			var doma = $('#website').val();
+			// console.log(doma); return false;
+			///^(http(s)?\/\/:)?(www\.)?[a-zA-Z\-]{3,}(\.(com|net|org))?$/
+			
+			
+	        if(!/(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/.test($('#website').val()))
+	        { 
+	            $(".hidden_website").removeClass("hidden");
+	            return false;
+	        }else
+	        	$("#profile_form").submit();});
+	}); // endsectionnd ready
+
+
 </script>
+
+
 @endsection
 		
 

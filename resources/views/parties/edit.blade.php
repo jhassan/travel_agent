@@ -60,11 +60,11 @@
 						<div class="bfh-selectbox" data-name="account_id" data-value="{{ $parties->account_id }}" data-filter="true">
                       	  <input type="hidden" name="account_id" value="{{ $parties->account_id }}">
 						  <div data-value="">Select Account</div>
-						  <div data-value="1">Bank/Card</div>
-						  <div data-value="2">Clients/Receiveable</div>
-                          <div data-value="2">Vender/Payable</div>
-                          <div data-value="2">Expence</div>
-                          <div data-value="2">Profit &amp; loss</div>
+						  <div data-value="100000">Bank/Card</div>
+						  <div data-value="200000">Clients/Receiveable</div>
+                          <div data-value="300000">Vender/Payable</div>
+                          <div data-value="400000">Expence</div>
+                          <div data-value="500000">Profit &amp; loss</div>
 						</div>
   					</div>
 				</div>
