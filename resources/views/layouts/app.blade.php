@@ -108,9 +108,9 @@
                             <li><a href="/parties">View/Edit Vendor/Client</a></li>
                         </ul>
                     </li>
-                    <li class="submenu current {{ Request::is('sale_voucher') ? 'open' : '' }} {{ Request::is('list_sale_voucher') ? 'open' : '' }}">
+                    <li class="submenu current {{ Request::is('vouchers') ? 'open' : '' }} {{ Request::is('vouchers/sale_voucher') ? 'open' : '' }} {{ Request::is('vouchers/list_sale_voucher') ? 'open' : '' }}">
                          <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Manage Vouchers
+                            <i class="glyphicon glyphicon-list"></i> Manage Sale Vouchers
                             <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->

@@ -20,7 +20,7 @@
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 			<fieldset>
 				<div class="panel-heading">
-					<legend>Add Party</legend>
+					<legend>Create Vendor/Client</legend>
 				</div>	
 				<div class="form-group col-sm-3">
 					<label>Company Name</label>

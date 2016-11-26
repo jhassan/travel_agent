@@ -532,12 +532,12 @@
 	    	{
 	    		var client_main_total = $("#hdn_client_main_total").val();
 	    		var ven_main_total = $("#hdn_ven_main_total").val();
-	    		console.log(client_main_total+"******"+ven_main_total);
+	    		//console.log(client_main_total+"******"+ven_main_total);
 	    		client_main_total = remove_comma(client_main_total);
 	    		ven_main_total = remove_comma(ven_main_total);	
 	    	}
 	    	
-	    	var total_profit_loss = parseInt(client_main_total) - parseInt(ven_main_total);
+	    	var total_profit_loss = parseInt(ven_main_total) - parseInt(client_main_total);
 	    	//console.log(total_profit_loss);
 	    	if (total_profit_loss < 0)
 	    	{
@@ -563,7 +563,7 @@
 	    	{
 	    		var ven_main_total = $("#ven_main_total").val();
 	    		ven_main_total = remove_comma(ven_main_total);
-	    		var total_vendor = parseInt(actual_fare_total) + parseInt(ven_main_total);
+	    		var total_vendor = parseInt(actual_fare_total) - parseInt(ven_main_total);
 	    		$("#vendor_payable_amount").val(addCommas(total_vendor));
 	    		$("#hdn_vendor_payable_amount").val(addCommas(total_vendor));
 	    	}
@@ -571,7 +571,7 @@
 	    	{
 	    		var client_main_total = $("#client_main_total").val();
 	    		client_main_total = remove_comma(client_main_total);
-	    		var total_client = parseInt(actual_fare_total) + parseInt(client_main_total);
+	    		var total_client = parseInt(actual_fare_total) - parseInt(client_main_total);
 	    		$("#client_receivable_amount").val(addCommas(total_client));
 	    		$("#hdn_client_receivable_amount").val(addCommas(total_client));
 	    	}
