@@ -108,3 +108,16 @@ Route::group(
       Route::get('delete_party', array('as'=>'delete_party', 'uses' => 'ProfileController@destroy'));
   });
 
+// Manage Payment Vouchers
+Route::group(
+  array('prefix' => '/payment_vouchers','before' => ''), function () {
+    Route::get('receive_payment', array('as' => 'receive_payment/payment_voucher', 'uses' => 'PaymentVoucherController@receive_payment'));
+    Route::get('payment_voucher', array('as' => 'payment_voucher/payment_voucher', 'uses' => 'PaymentVoucherController@payment_voucher'));
+    Route::get('journal_voucher', array('as' => 'journal_voucher/payment_voucher', 'uses' => 'PaymentVoucherController@journal_voucher'));
+      Route::post('add_new', 'ProfileController@create');
+      Route::get('/', array('as' => 'profile', 'uses' => 'ProfileController@index'));
+      Route::get('{id}/edit', array('as' => 'parties.update', 'uses' => 'ProfileController@edit'));
+      Route::post('{id}/edit', 'ProfileController@update');
+      Route::get('delete_party', array('as'=>'delete_party', 'uses' => 'ProfileController@destroy'));
+  });
+

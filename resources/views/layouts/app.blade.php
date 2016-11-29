@@ -21,6 +21,9 @@
     <style type="text/css">
     .text_bold {font-weight: bold !important; font-size: 14px;}
     .clear{ clear: both; }
+    .p-l-0{padding-left: 0px !important;}
+    .p-r-0{padding-right: 0px !important;}
+    .m-b-15{margin-bottom: 15px !important;}
     </style>
 
     <!-- CSRF Token -->
@@ -140,6 +143,19 @@
                             <li class="current"><a href="/reports/view_purchase_stock">Purchase Stock</a></li>
                             <li><a href="/reports/view_sale_stock">Sale Stock</a></li>
                             <li><a href="/reports/view_today_stock">Today Stock</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu current {{ Request::is('payment_vouchers/receive_payment') ? 'open' : '' }} {{ Request::is('payment_vouchers/payment_voucher') ? 'open' : '' }} {{ Request::is('payment_vouchers/journal_voucher') ? 'open' : '' }} ">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Manage Payment Vouchers
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/payment_vouchers/receive_payment">Receive Payment</a></li>
+                            <li><a href="/payment_vouchers/payment_voucher">Payment Voucher</a></li>
+                            <li><a href="/payment_vouchers/journal_voucher">Journal Voucher</a></li>
                         </ul>
                     </li>
                 </ul>
