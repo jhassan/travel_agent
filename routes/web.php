@@ -121,3 +121,25 @@ Route::group(
       Route::get('delete_party', array('as'=>'delete_party', 'uses' => 'ProfileController@destroy'));
   });
 
+//users
+Route::group(
+ array('prefix' => '/users','before' => ''), function () {
+    Route::get('add', array('as' => 'add/user', 'uses' => 'UserController@add'));
+      Route::post('add_new', 'UserController@create');
+      Route::get('/', array('as' => 'user', 'uses' => 'UserController@index'));
+      Route::get('{id}/edit', array('as' => 'users.update', 'uses' => 'UserController@edit'));
+      Route::post('{id}/edit', 'UserController@update');
+      Route::get('delete_user', array('as'=>'delete_user', 'uses' => 'UserController@destroy'));
+  });
+
+
+//permissions
+Route::group(
+ array('prefix' => '/permissions','before' => ''), function () {
+    Route::get('add', array('as' => 'add/permissions', 'uses' => 'PermissionController@add'));
+    Route::post('add_new', 'PermissionController@create');
+    Route::get('/', array('as' => 'permission', 'uses' => 'PermissionController@index'));
+    Route::get('{id}/edit', array('as' => 'users.update', 'uses' => 'PermissionController@edit'));
+    Route::post('{id}/edit', 'PermissionController@update');
+    Route::get('delete_permission', array('as'=>'delete_permission', 'uses' => 'PermissionController@destroy'));
+  });

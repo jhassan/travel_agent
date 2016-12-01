@@ -158,6 +158,31 @@
                             <li><a href="/payment_vouchers/journal_voucher">Journal Voucher</a></li>
                         </ul>
                     </li>
+
+                    <li class="submenu current {{ Request::is('users/add') ? 'open' : '' }} {{ Request::is('users/index') ? 'open' : '' }}">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Users
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/users/add">Create User</a></li>
+                            <li><a href="/users">Edit/View User</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu current {{ Request::is('permissions/add') ? 'open' : '' }} {{ Request::is('permissions/index') ? 'open' : '' }}">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Permission
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/permissions/add">Add Permission</a></li>
+                            <li><a href="/permissions">Edit/View Permission</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
 
                 </ul>

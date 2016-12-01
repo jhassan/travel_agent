@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class User extends Authenticatable
 {
@@ -27,4 +28,27 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function all_parent_permission()
+    {
+        $arrayParentPermission = DB::table('permissions')->whereRaw('parent_id = 0')->get();
+
+        return $arrayParentPermission;
+    }
+
+    public function all_child_permission()
+    {
+        
+            $arrayChieldPerission = DB::table('permissions')->get();
+        
+        return $arrayChieldPerission;
+    }
+
+    public function all_users()
+    {
+        
+            $arrayUsers = DB::table('users')->get();
+        // print_r($arrayUsers);die;
+        return $arrayUsers;
+    }
 }
