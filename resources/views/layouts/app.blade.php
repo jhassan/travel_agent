@@ -122,6 +122,17 @@
                             <li class="current"><a href="/vouchers/list_sale_voucher">List Sale Vouchers</a></li>
                         </ul>
                     </li>
+                    <li class="submenu current {{ Request::is('refund_vouchers') ? 'open' : '' }} {{ Request::is('refund_vouchers/refund_voucher') ? 'open' : '' }} {{ Request::is('refund_vouchers/list_refund_voucher') ? 'open' : '' }}">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Manage Refund Vouchers
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/refund_vouchers/refund_voucher">Create Refund Vouchers</a></li>
+                            <li class="current"><a href="/refund_vouchers/list_refund_voucher">List Refund Vouchers</a></li>
+                        </ul>
+                    </li>
                     <li class="hidden submenu current {{ Request::is('accounts') ? 'open' : '' }} {{ Request::is('accounts/frm_ledger') ? 'open' : '' }} {{ Request::is('accounts/view_ledger') ? 'open' : '' }} {{ Request::is('accounts/list_transections') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i> Manage Accounts

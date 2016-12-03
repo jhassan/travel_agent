@@ -16,9 +16,9 @@
 		   <div class="alert alert-info">{{ Session::get('sale_voucher_message') }}</div>
 		@endif
 		<div class="panel-body">
-			<form role="form" id="sale_vouchers_form" method="POST" action="{{ url('/vouchers/add_sale') }}">
+			<form role="form" id="sale_vouchers_form" method="POST" action="{{ url('/refund_vouchers/add_refund') }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-			<input type="hidden" name="voucher_type" value="SV" />
+			<input type="hidden" name="voucher_type" value="RV" />
 			<fieldset>
 				<div class="form-group col-sm-3">
 					<label>Posting Date</label>
@@ -30,7 +30,7 @@
 					</div>
 				</div>
 				<div class="panel-heading">
-					<h1 class="text-right">Sale Invoice</h1>
+					<h1 class="text-right">Refund Voucher</h1>
 					<legend>Pessenger Details</legend>
 				</div>
 				<div class="form-group col-sm-3">

@@ -95,7 +95,15 @@ Route::group(
       Route::get('sale_voucher', array('as' => 'sale_voucher', 'uses' => 'VoucherController@sale_voucher'));
       Route::post('add_sale', 'VoucherController@create');
       Route::get('list_sale_voucher', array('as' => 'voucher', 'uses' => 'VoucherController@list_sale_voucher'));
-  });
+});
+
+// Refund Vouchers
+Route::group(
+  array('prefix' => '/refund_vouchers','before' => ''), function () {
+      Route::get('refund_voucher', array('as' => 'refund_voucher', 'uses' => 'VoucherController@refund_voucher'));
+      Route::post('add_refund', 'VoucherController@create_refund');
+      Route::get('list_refund_voucher', array('as' => 'voucher', 'uses' => 'VoucherController@list_refund_voucher'));
+});
 
 // Profile
 Route::group(
