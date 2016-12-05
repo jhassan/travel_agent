@@ -13,21 +13,21 @@ class PaymentVoucher extends Model
 
     public function bank_list(){
 
-    		$arrayBankList = DB::table('coa')
-    			->select('coa_account','coa_code')
-                ->whereRaw('coa_code LIKE  "100%"')
-                ->get();
-           return $arrayBankList;
+		$arrayBankList = DB::table('coa')
+			->select('coa_account','coa_code')
+            ->whereRaw('coa_code LIKE "100%" AND coa_code <> 100000')
+            ->get();
+       return $arrayBankList;
 
     }
 
     public function client_list(){
 
-    		$arrayBankList = DB::table('parties')
-    			->select('name')
-                
-                ->get();
-           return $arrayBankList;
+		$arrayClientList = DB::table('coa')
+        ->select('coa_account','coa_code')
+        ->whereRaw('coa_code LIKE "200%" AND coa_code <> 200000')
+        ->get();
+       return $arrayClientList;
 
     }
 /*

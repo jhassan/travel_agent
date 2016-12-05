@@ -27,11 +27,6 @@
 					<input class="form-control" maxlength="100" placeholder="Company Name" name="name" type="text" value="">
 				</div>
 				<div class="form-group col-sm-3">
-					<label>Code</label>
-					<input class="form-control" maxlength="100" placeholder="Code" name="code" type="text" value="">
-				</div>
-
-				<div class="form-group col-sm-3">
 					<label>Phone #</label>
 					<input class="form-control"  data-mask="0999-9999999" data-mask-placeholder="#" placeholder="Phone #" maxlength="11" name="phone_no" type="text" value="">
 				</div>
@@ -70,7 +65,7 @@
   					</div>
 				</div>
                 
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-3 hide">
 					<div>
   						<label>Party Type</label>
 						<div class="bfh-selectbox" data-name="type_id" data-value="" data-filter="true">

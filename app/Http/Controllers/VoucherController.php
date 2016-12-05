@@ -310,4 +310,51 @@ class VoucherController extends Controller
             return Redirect::route('parties.edit')->with('error', 'Error Message');
         }
     }
+
+    // payment vouchers
+    public function save_payment_voucher()
+    {
+        $rules = array(
+            'voucher_date' => 'required',
+            'bank_name' => 'required',
+            'client_name' => 'required',
+            'description' => 'required',
+            'total_voucher_amount' => 'required'
+        );
+
+        // Create a new validator instance from our validation rules
+        $validator = Validator::make(Input::all(), $rules);
+
+        // If validation fails, we'll exit the operation now.
+        if ($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+        $data = new SaleVouchers();
+        
+        $data->posting_date = date("Y-m-d", strtotime(Input::get('voucher_date')));
+        $data->total_voucher_amount = $this->RemoveComma(Input::get('total_voucher_amount'));
+        $data->voucher_type = Input::get('voucher_type');
+        
+        if($data->save()){
+            $insertedId = $data->id;
+            // Create Vouchers Details
+            $date = date("d-m-Y");
+            $voucher_descriptions = Input::get('description');
+            $DebitAcc = Input::get('bank_name');
+            $CreditAcc = Input::get('client_name');
+            $arrTrans[] = array("coa" => $DebitAcc, "desc" => $voucher_descriptions,  "debit" => $this->RemoveComma($data->total_voucher_amount), "credit" => 0);
+            $arrTrans[] = array("coa" => $CreditAcc, "desc" => $voucher_descriptions,"debit" => 0, "credit" => $this->RemoveComma($data->total_voucher_amount));
+            foreach($arrTrans as $tran)
+            {
+                $arrayInsertDetail = array("sale_voucher_master_id" => $insertedId,
+                            "coa_code" => $tran["coa"],
+                            "coa_debit" => $tran["debit"],
+                            "voucher_descriptions" => $tran["desc"],
+                            "coa_credit" => $tran["credit"]);
+                SaleVouchersDetails::insert($arrayInsertDetail);
+            }
+        }
+        Session::flash('message', "Voucher added successfully!");
+        return Redirect::back();
+    }
 }

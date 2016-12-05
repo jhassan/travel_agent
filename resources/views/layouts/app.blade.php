@@ -100,6 +100,7 @@
                             <li><a href="/profiles">View/Edit Profile</a></li>
                         </ul>
                     </li>
+                    {{ Auth::user()->user_permission }}
                     <li class="submenu current {{ Request::is('users') ? 'open' : '' }} {{ Request::is('users/add') ? 'open' : '' }} {{ Request::is('users/index') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i>Manage Users
