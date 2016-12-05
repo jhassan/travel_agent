@@ -95,15 +95,15 @@
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Receive Comm.</div>
 					<div class="form-group col-sm-3"><input placeholder="%" class="form-control number_only focus_blur col-sm-1 small_box" maxlength="2" name="ven_percent_rec_comm" id="ven_percent_rec_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Receive Comm." class="form-control focus_blur number_only col-sm-1" maxlength="2" name="vendor_rec_comm_total" id="vendor_rec_comm_total" type="text" value="0"></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Receive Comm." class="form-control focus_blur number_only col-sm-1" maxlength="3" name="vendor_rec_comm_total" id="vendor_rec_comm_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Give PSF</div>
 					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="ven_give_psf_comm" id="ven_give_psf_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Give PSF" class="form-control focus_blur number_only col-sm-1" maxlength="2" name="ven_give_psf_total" id="ven_give_psf_total" type="text" value="0"></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Give PSF" class="form-control focus_blur number_only col-sm-1" maxlength="3" name="ven_give_psf_total" id="ven_give_psf_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">WHT</div>
 					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="ven_wht_percent_comm" id="ven_wht_percent_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="WHT" class="form-control focus_blur number_only col-sm-1" maxlength="2" name="ven_wht_total" id="ven_wht_total" type="text" value="0"></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="WHT" class="form-control focus_blur number_only col-sm-1" maxlength="3" name="ven_wht_total" id="ven_wht_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-2" style="padding:0px; margin-bottom:0px; margin-top: 8px;"></div>
 					<div class="form-group col-sm-8 text-right" style="float:right;"><input placeholder="" style="background-color: #e5e5e5; font-weight: bold;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" name="ven_main_total" id="ven_main_total" type="text" value="0"><input type="hidden" name="ven_main_total" id="hdn_ven_main_total" value="0"></div>
@@ -113,15 +113,15 @@
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Give Comm.</div>
 					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="client_percent_rec_comm" id="client_percent_rec_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Give Comm." class="form-control focus_blur number_only col-sm-1" maxlength="2" name="client_rec_comm_total" id="client_rec_comm_total" type="text" value="0"></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Give Comm." class="form-control focus_blur number_only col-sm-1" maxlength="3" name="client_rec_comm_total" id="client_rec_comm_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">Receive PSF</div>
 					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="client_receive_psf_comm" id="client_receive_psf_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Receive PSF" class="form-control focus_blur number_only col-sm-1" maxlength="2" name="client_receive_psf_total" id="client_receive_psf_total" type="text" value="0"></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="Receive PSF" class="form-control focus_blur number_only col-sm-1" maxlength="3" name="client_receive_psf_total" id="client_receive_psf_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-4" style="padding:0px; margin-bottom:0px; margin-top: 8px;">WHT</div>
 					<div class="form-group col-sm-3"><input placeholder="%" class="form-control focus_blur number_only col-sm-1 small_box" maxlength="2" name="client_wht_percent_comm" id="client_wht_percent_comm" type="text" value=""></div>
-					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="WHT" class="form-control focus_blur number_only col-sm-1" maxlength="2" name="client_wht_total" id="client_wht_total" type="text" value="0"></div>
+					<div class="form-group col-sm-5" style="padding-left:0px;"><input placeholder="WHT" class="form-control focus_blur number_only col-sm-1" maxlength="3" name="client_wht_total" id="client_wht_total" type="text" value="0"></div>
 					<div class="clear"></div>
 					<div class="form-group col-sm-2" style="padding:0px; margin-bottom:0px; margin-top: 8px;"></div>
 					<div class="form-group col-sm-8 text-right" style="float:right;"><input placeholder="" style="background-color: #e5e5e5; font-weight: bold;" class="form-control number_only" disabled="disabled" placeholder="Total" maxlength="7" id="client_main_total" type="text" value="0"><input type="hidden" name="client_main_total" id="hdn_client_main_total" value="0"></div>
@@ -161,12 +161,14 @@
 			<div class="form-group col-sm-3">
 		      <button type="button" id="submit_button" class="btn btn-primary">Save</button>
 		    </div>
-		    
+		    <input type="hidden" id="item_counter" name="item_counter" value="0" />
+		    <input type="hidden" id="sum_vendor_payable" value="0" />
+		    <input type="hidden" id="minus_client_receiveable" value="0" />
 		</form>
 		</div>
 	</div>
 </div>
-<input type="hidden" id="item_counter" name="item_counter" value="0" />
+
 <style type="text/css">
 .amount_text {
 	text-align: center;
@@ -213,6 +215,7 @@
 			$("#vendor_rec_comm_total").attr("disabled","disabled");
 			$("#ven_wht_percent_comm").attr("disabled","disabled");
 			$("#ven_wht_total").attr("disabled","disabled");
+			$("#sum_vendor_payable").val(2);
 		});
 		// refresh vendor
 		$("#refresh_vendor").click(function (){
@@ -230,11 +233,13 @@
 			$("#ven_give_psf_comm").val('');
 			$("#ven_give_psf_total").val(0);
 			$("#ven_main_total").val(0);
+			$("#sum_vendor_payable").val(0);
 		});
 		// ven_percent_rec_comm
 		$("#ven_percent_rec_comm").click(function (){
 			$("#ven_give_psf_comm").attr("disabled","disabled");
 			$("#ven_give_psf_total").attr("disabled","disabled");
+			$("#sum_vendor_payable").val(1);
 		});
 		// client_receive_psf_comm
 		$("#client_receive_psf_comm").click(function (){
@@ -242,6 +247,7 @@
 			$("#client_rec_comm_total").attr("disabled","disabled");
 			$("#client_wht_percent_comm").attr("disabled","disabled");
 			$("#client_wht_total").attr("disabled","disabled");
+			$("#minus_client_receiveable").val(2);
 		});
 		// refresh client
 		$("#refresh_client").click(function (){
@@ -258,14 +264,17 @@
 			$("#client_wht_total").val(0);
 			$("#client_receive_psf_comm").val('');
 			$("#client_receive_psf_total").val(0);
+			$("#minus_client_receiveable").val(0);
 		});
 		// client_percent_rec_comm
 		$("#client_percent_rec_comm").click(function (){
 			$("#client_receive_psf_comm").attr("disabled","disabled");
 			$("#client_receive_psf_total").attr("disabled","disabled");
+			$("#minus_client_receiveable").val(1);
 		});
 		// calculate actual value basic fare
 		$("#basic_fare").keyup(function (){
+			$("#sum_vendor_payable").val(0);
 			var basic_fare = $(this).val();
 			if(basic_fare != "" && basic_fare != null && basic_fare != "NaN")
 			{
@@ -573,7 +582,10 @@
 	    	{
 	    		var ven_main_total = $("#ven_main_total").val();
 	    		ven_main_total = remove_comma(ven_main_total);
-	    		var total_vendor = parseInt(actual_fare_total) - parseInt(ven_main_total);
+	    		if($("#sum_vendor_payable").val() == 1)
+	    			var total_vendor = parseInt(actual_fare_total) + parseInt(ven_main_total);
+	    		else if($("#sum_vendor_payable").val() == 2)
+	    			var total_vendor = parseInt(actual_fare_total) - parseInt(ven_main_total);
 	    		$("#vendor_payable_amount").val(addCommas(total_vendor));
 	    		$("#hdn_vendor_payable_amount").val(addCommas(total_vendor));
 	    	}
@@ -581,7 +593,10 @@
 	    	{
 	    		var client_main_total = $("#client_main_total").val();
 	    		client_main_total = remove_comma(client_main_total);
-	    		var total_client = parseInt(actual_fare_total) - parseInt(client_main_total);
+	    		if($("#minus_client_receiveable").val() == 1)
+	    			var total_client = parseInt(actual_fare_total) + parseInt(client_main_total);
+	    		else if($("#minus_client_receiveable").val() == 2)
+	    			var total_client = parseInt(actual_fare_total) - parseInt(client_main_total);
 	    		$("#client_receivable_amount").val(addCommas(total_client));
 	    		$("#hdn_client_receivable_amount").val(addCommas(total_client));
 	    	}

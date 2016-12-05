@@ -151,3 +151,10 @@ Route::group(
     Route::post('{id}/edit', 'PermissionController@update');
     Route::get('delete_permission', array('as'=>'delete_permission', 'uses' => 'PermissionController@destroy'));
   });
+
+// payment voucher
+Route::group(
+ array('prefix' => '/payment_voucher','before' => ''), function () {
+    Route::post('receive_voucher', array('as' => 'receive_voucher', 'uses' => 'VoucherController@save_payment_voucher'));
+    Route::post('payment_voucher', array('as' => 'payment_voucher', 'uses' => 'VoucherController@save_payment_voucher'));
+});

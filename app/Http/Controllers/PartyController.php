@@ -42,7 +42,6 @@ class PartyController extends Controller
         $rules = array(
             'name'  => 'required|unique:parties|max:100',
             'phone_no'  => 'unique:parties|max:12',
-            'type_id'  => 'required',
 			'account_id'  => 'required'
         );
 //print_r(Input::all());die;
@@ -56,20 +55,20 @@ class PartyController extends Controller
         $data = new Party();
         
         $data->name = Input::get('name');
-		$data->code = Input::get('code');
+		//$data->code = Input::get('code');
 		$data->ptcl_no = Input::get('ptcl_no');
 		$data->email = Input::get('email_address');
 		$data->account_id = Input::get('account_id');
         $data->address = Input::get('address');
         $data->phone_no = Input::get('phone_no');
         $data->city = Input::get('city');
-        $data->type_id = Input::get('type_id');
+        //$data->type_id = Input::get('type_id');
         $coa_credit = str_replace(",","",Input::get("coa_credit"));
         $coa_debit = str_replace(",","",Input::get("coa_debit"));
         $party = new Party();
         if($data->account_id == 100000)
         {
-            $coa_code = $party->get_next_coa('1000');
+            $coa_code = $party->get_next_coa('100');
             //$account_type = 'p';
         }
         elseif($data->account_id == 200000)
