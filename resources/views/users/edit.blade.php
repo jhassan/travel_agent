@@ -16,7 +16,7 @@
 		   <div class="alert alert-info">{{ Session::get('message') }}</div>
 		@endif
 		<div class="panel-body">
-			<form role="form" method="POST" action="{{ url('/users/add_new') }}">
+			<form role="form" method="POST" action="">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 			<fieldset>
 				<div class="panel-heading">
@@ -59,6 +59,10 @@
 						</div>
   					</div>
 				</div>
+
+				<div class="form-group col-sm-3 pull-right" style=" margin-top: 20px;">
+			      <span class="btn btn-primary checkedBtn pull-right">Check All</span>
+			    </div>
 				<div class="clear"></div>
 
 				@foreach($patentPermission as $parent)
@@ -69,14 +73,14 @@
 						@if($child->parent_id == $parent->id)
 						@php 
 							$find_permission = $child->id;
-							if(strpos($user_permission, "$find_permission") !== false)
+							if(strpos($user_permission, "$find_permission") != false)
 								$checked = "checked='checked'";
 							else
 								$checked = "";
 						@endphp
 						<div class="col-sm-3" style="padding-left: 0px;">
 							<p style="padding-left: 0px;" class="text-left col-sm-9">{{ ucfirst($child->name) }}</p>
-							<input {{ $checked }} name="permission[{{$child->id}}]" type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
+							<input class="checkedAll" {{ $checked }} name="permission[{{$child->id}}]" type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
 						</div>
 						@endif
 					@endforeach
@@ -105,11 +109,14 @@
 	    $("#re_type_Password").blur(function(){
 	    	var password = $('#password').val();
 	    	var re_type_Password = $('#re_type_Password').val();
-		    if(re_type_Password != password){console.log('hahahah');
+		    if(re_type_Password != password){
 		    	$('#pass_error').removeClass('hidden')
 		    	return false;
 		    }
 	    });
+	    $('.checkedBtn').click(function () {  
+		    $('.checkedAll').attr( 'checked', 'checked' );
+		});
 	});
 	</script>
 @endsection

@@ -49,10 +49,6 @@
 				</div>
 
 				<div class="form-group col-sm-3">
-					<label>User Type</label>
-					<input class="form-control" placeholder="User Type" name="user_type" type="text" value="{{ Input::old('user_type') }}">
-				</div>
-				<div class="form-group col-sm-3">
 					<div>
   						<label>User Type</label>
 						<div class="bfh-selectbox" data-name="user_type" data-value="" data-filter="true">
@@ -62,6 +58,10 @@
 						</div>
   					</div>
 				</div>
+
+				<div class="form-group col-sm-3 pull-right" style=" margin-top: 20px;">
+			      <span class="btn btn-primary checkedBtn pull-right">Check All</span>
+			    </div>
 				<div class="clear"></div>
 
 				@foreach($patentPermission as $parent)
@@ -72,7 +72,7 @@
 						@if($child->parent_id == $parent->id)
 						<div class="col-sm-3" style="padding-left: 0px;">
 							<p style="padding-left: 0px;" class="text-left col-sm-9">{{ ucfirst($child->name) }}</p>
-							<input name="permission[{{$child->id}}]" type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
+							<input class="checkedAll" name="permission[{{$child->id}}]" type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
 						</div>
 						@endif
 					@endforeach
@@ -109,6 +109,9 @@
 		    	return false;
 		    }
 	    });
+	    $('.checkedBtn').click(function () {  
+		    $('.checkedAll').attr( 'checked', 'checked' );
+		});
 	});
 	</script>
 @endsection

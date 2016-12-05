@@ -60,13 +60,13 @@
 								height:170,
 								width: 400,
 								modal: true,
-								title: 'Delete Party',
+								title: 'Delete User',
 								buttons: {
 									Delete: function() {
 										$(this).dialog('close');
 										$.ajax({
                           type: "GET",
-                      				url: '/parties/delete_party',
+                      				url: '/users/delete_user',
                           data: { DelID: DelID }
                       }).done(function( msg ) {
                           //alert( msg+'ttttt' );
