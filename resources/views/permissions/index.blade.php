@@ -4,7 +4,7 @@
 <div class="col-md-9">
 	<div class="content-box-large">
 		<div class="panel-heading">
-			<legend>View Vendor/Client</legend>
+			<legend>View Permissions</legend>
 		</div>
 		@if (Session::has('message_update'))
 		   <div class="alert alert-info">{{ Session::get('message_update') }}</div>
@@ -13,7 +13,6 @@
 			<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 			<thead>
 				<tr>
-					<th>Patent</th>
 					<th>Name </th>
 					<th>Action</th>
 				</tr>
@@ -21,7 +20,6 @@
 			<tbody>
 				@foreach($PermissionList as $list)
 					<tr class="odd gradeX" id="row_{{ $list->id }}">
-						<td>{{ $list->parent_id }}</td>
 						<td>{{ $list->name }}</td>
 						<td class="center"><a href="/permissions/{{ $list->id }}/edit"><img src="/images/edit.png" alt="Edit"></a>&nbsp; &nbsp;<a id="{{ $list->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;"></a></td>
 					</tr>

@@ -20,7 +20,7 @@
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 			<fieldset>
 				<div class="panel-heading">
-					<legend>Add Permission</legend>
+					<legend>Create Permission</legend>
 				</div>	
 				
 				<div class="form-group col-sm-3">

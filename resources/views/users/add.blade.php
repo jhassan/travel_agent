@@ -20,7 +20,7 @@
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 			<fieldset>
 				<div class="panel-heading">
-					<legend>Add User</legend>
+					<legend>Create User</legend>
 				</div>	
 				<div class="form-group col-sm-3">
 					<label>Name</label>
@@ -65,19 +65,17 @@
 				<div class="clear"></div>
 
 				@foreach($patentPermission as $parent)
-				<div class="form-group col-sm-6">
-					<label>
-						{{ ucfirst($parent->name) }}
-					</label>
+				<div class="form-group col-sm-12">
+					<label style="font-size: 14px;">{{ ucfirst($parent->name) }}</label>
 					<div class="clear"></div>
 					@foreach($childPermission as $child)
 						@if($child->parent_id == $parent->id)
-						<div class=" col-sm-3">
-							<label>{{ ucfirst($child->name) }}</label>
+						<div class="col-sm-3" style="padding-left: 0px;">
+							<p style="padding-left: 0px;" class="text-left col-sm-9">{{ ucfirst($child->name) }}</p>
 							<input name="permission[{{$child->id}}]" type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
 						</div>
 						@endif
-					@endforeach;
+					@endforeach
 				</div>
 				<div class="clear"></div>
 				@endforeach;

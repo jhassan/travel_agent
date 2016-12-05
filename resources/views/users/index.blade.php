@@ -4,7 +4,7 @@
 <div class="col-md-9">
 	<div class="content-box-large">
 		<div class="panel-heading">
-			<legend>View Vendor/Client</legend>
+			<legend>View Users</legend>
 		</div>
 		@if (Session::has('message_update'))
 		   <div class="alert alert-info">{{ Session::get('message_update') }}</div>

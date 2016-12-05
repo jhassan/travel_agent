@@ -32,23 +32,28 @@ class User extends Authenticatable
     public function all_parent_permission()
     {
         $arrayParentPermission = DB::table('permissions')->whereRaw('parent_id = 0')->get();
-
         return $arrayParentPermission;
     }
 
     public function all_child_permission()
     {
-        
-            $arrayChieldPerission = DB::table('permissions')->get();
-        
+        $arrayChieldPerission = DB::table('permissions')->get();
         return $arrayChieldPerission;
     }
 
     public function all_users()
     {
-        
-            $arrayUsers = DB::table('users')->get();
-        // print_r($arrayUsers);die;
+        $arrayUsers = DB::table('users')->get();
         return $arrayUsers;
+    }
+
+    // Get user permissions
+    public function user_permissions($id)
+    {
+        $arrayPermission = DB::table('users')
+                    ->select('user_permission')    
+                    ->where('id', '=', $id)
+                    ->get();
+        return $arrayPermission[0]->user_permission;
     }
 }

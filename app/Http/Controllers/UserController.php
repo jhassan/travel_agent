@@ -49,7 +49,7 @@ class UserController extends Controller
         $data = new User();
 
         $permission_checked = Input::get('permission');
-        $arrayChickList = implode(', ', $permission_checked);
+        $arrayChickList = implode(',', $permission_checked);
 
         $data->name = Input::get('name');
 		$data->user_phone_no = Input::get('user_phone_no');
@@ -71,11 +71,11 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        try {
+       try {
             $data = new User;
             $patentPermission = $data->all_parent_permission();
             $childPermission = $data->all_child_permission();
-            $user_permission =  Auth::user()->user_permission;
+            $user_permission =  $data->user_permissions($id);
             $user = DB::table('users')->where('id', $id)->first();
             //print_r($users);die;
             return View('users.edit',compact('user','patentPermission','childPermission','user_permission'));

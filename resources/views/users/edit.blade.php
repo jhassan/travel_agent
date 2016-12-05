@@ -20,7 +20,7 @@
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 			<fieldset>
 				<div class="panel-heading">
-					<legend>Add User</legend>
+					<legend>Edit User</legend>
 				</div>	
 				<div class="form-group col-sm-3">
 					<label>Name</label>
@@ -51,7 +51,7 @@
 				<div class="form-group col-sm-3">
 					<div>
   						<label>User Type</label>
-						<div class="bfh-selectbox" data-name="user_type" data-value="" data-filter="true">
+						<div class="bfh-selectbox" data-name="user_type" data-value="{{ $user->user_type }}" data-filter="true">
 						<input class="hidden" placeholder="User Type" name="user_type" type="text" value="{{ $user->user_type }}">
 						  <div data-value="">Select User</div>
 						  <div data-value="0">Admin</div>
@@ -60,47 +60,29 @@
   					</div>
 				</div>
 				<div class="clear"></div>
-				@php
-					$permissionArray =  explode(',',$user_permission);
-
-				@endphp
 
 				@foreach($patentPermission as $parent)
-						@php
-							$i = 0;
-						@endphp
-				<div class="form-group col-sm-6">
-					<label>
-						{{ ucfirst($parent->name) }}
-					</label>
+				<div class="form-group col-sm-12">
+					<label style="font-size: 14px;">{{ ucfirst($parent->name) }}</label>
 					<div class="clear"></div>
 					@foreach($childPermission as $child)
 						@if($child->parent_id == $parent->id)
-							@if($child->parent_id == $permissionArray[$i])
-								@php
-									$checked = "checked";
-								@endphp
-							@else
-								@php
-									$checked = "";
-								@endphp
-							@endif
-
-						<div class=" col-sm-3">
-							<label>{{ ucfirst($child->name) }}</label>
-							<input name="permission[{{$child->id}}]" @php $checked	@endphp type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
-						</div>
-						@php
-							$i++;
+						@php 
+							$find_permission = $child->id;
+							if(strpos($user_permission, "$find_permission") !== false)
+								$checked = "checked='checked'";
+							else
+								$checked = "";
 						@endphp
+						<div class="col-sm-3" style="padding-left: 0px;">
+							<p style="padding-left: 0px;" class="text-left col-sm-9">{{ ucfirst($child->name) }}</p>
+							<input {{ $checked }} name="permission[{{$child->id}}]" type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
+						</div>
 						@endif
-					@endforeach;
+					@endforeach
 				</div>
 				<div class="clear"></div>
 				@endforeach;
-                
-                
-                
 			</fieldset>
 			<div class="form-group col-sm-3">
 		      <button type="submit" class="btn btn-primary">Save</button>

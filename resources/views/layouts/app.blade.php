@@ -100,6 +100,17 @@
                             <li><a href="/profiles">View/Edit Profile</a></li>
                         </ul>
                     </li>
+                    <li class="submenu current {{ Request::is('users') ? 'open' : '' }} {{ Request::is('users/add') ? 'open' : '' }} {{ Request::is('users/index') ? 'open' : '' }}">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i>Manage Users
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li class="current"><a href="/users/add">Create User</a></li>
+                            <li><a href="/users">Edit/View User</a></li>
+                        </ul>
+                    </li>
                     <li class="submenu current {{ Request::is('parties') ? 'open' : '' }} {{ Request::is('parties/add') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i> Manage Vendor/Client
@@ -133,7 +144,7 @@
                             <li class="current"><a href="/refund_vouchers/list_refund_voucher">List Refund Vouchers</a></li>
                         </ul>
                     </li>
-                    <li class="hidden submenu current {{ Request::is('accounts') ? 'open' : '' }} {{ Request::is('accounts/frm_ledger') ? 'open' : '' }} {{ Request::is('accounts/view_ledger') ? 'open' : '' }} {{ Request::is('accounts/list_transections') ? 'open' : '' }}">
+                    <li class="hide submenu current {{ Request::is('accounts') ? 'open' : '' }} {{ Request::is('accounts/frm_ledger') ? 'open' : '' }} {{ Request::is('accounts/view_ledger') ? 'open' : '' }} {{ Request::is('accounts/list_transections') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i> Manage Accounts
                             <span class="caret pull-right"></span>
@@ -170,26 +181,16 @@
                         </ul>
                     </li>
 
-                    <li class="submenu current {{ Request::is('users/add') ? 'open' : '' }} {{ Request::is('users/index') ? 'open' : '' }}">
-                         <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Users
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li class="current"><a href="/users/add">Create User</a></li>
-                            <li><a href="/users">Edit/View User</a></li>
-                        </ul>
-                    </li>
+                    
 
                     <li class="submenu current {{ Request::is('permissions/add') ? 'open' : '' }} {{ Request::is('permissions/index') ? 'open' : '' }}">
                          <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Permission
+                            <i class="glyphicon glyphicon-list"></i> Manage Permission
                             <span class="caret pull-right"></span>
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/permissions/add">Add Permission</a></li>
+                            <li class="current"><a href="/permissions/add">Create Permission</a></li>
                             <li><a href="/permissions">Edit/View Permission</a></li>
                         </ul>
                     </li>
