@@ -72,8 +72,8 @@
 					@foreach($childPermission as $child)
 						@if($child->parent_id == $parent->id)
 						@php 
-							$find_permission = $child->id;
-							if(strpos($user_permission, "$find_permission") != false)
+							$array_permission = explode(',',$user_permission);
+							if (in_array($child->id, $array_permission))
 								$checked = "checked='checked'";
 							else
 								$checked = "";

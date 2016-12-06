@@ -81,7 +81,9 @@
          </div>
     </div>
 @php 
+if (Auth::check())
   $user_permission = Auth::user()->user_permission;
+  $array_permission = explode(',',$user_permission);
 @endphp
 
     <div class="page-content">
@@ -92,7 +94,6 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="/home"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    
                     <li class="submenu current {{ Request::is('profiles') ? 'open' : '' }} {{ Request::is('profiles/add') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i> Manage Profile
@@ -101,18 +102,18 @@
                          <!-- Sub menu -->
                          <ul>
                             @php
-                              if(strpos($user_permission, "2") == true){
+                              if (in_array("2", $array_permission)){
                             @endphp
                               <li class="current "><a href="/profiles/add">Create Profile</a></li>
                             @php
                             }
-                              if(strpos($user_permission, "5") == true){
+                              if (in_array("5", $array_permission)){
                             @endphp
                               <li ><a href="/profiles">View/Edit Profile</a></li>
                             @php } @endphp
                         </ul>
                     </li>
-                    
+
                     <li class="submenu current {{ Request::is('users') ? 'open' : '' }} {{ Request::is('users/add') ? 'open' : '' }} {{ Request::is('users/index') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i>Manage Users
