@@ -80,6 +80,9 @@
             </div>
          </div>
     </div>
+@php 
+  $user_permission = Auth::user()->user_permission;
+@endphp
 
     <div class="page-content">
         <div class="row">
@@ -89,6 +92,7 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="/home"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                    
                     <li class="submenu current {{ Request::is('profiles') ? 'open' : '' }} {{ Request::is('profiles/add') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i> Manage Profile
@@ -96,11 +100,19 @@
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/profiles/add">Create Profile</a></li>
-                            <li><a href="/profiles">View/Edit Profile</a></li>
+                            @php
+                              if(strpos($user_permission, "2") == true){
+                            @endphp
+                              <li class="current "><a href="/profiles/add">Create Profile</a></li>
+                            @php
+                            }
+                              if(strpos($user_permission, "5") == true){
+                            @endphp
+                              <li ><a href="/profiles">View/Edit Profile</a></li>
+                            @php } @endphp
                         </ul>
                     </li>
-                    {{ Auth::user()->user_permission }}
+                    
                     <li class="submenu current {{ Request::is('users') ? 'open' : '' }} {{ Request::is('users/add') ? 'open' : '' }} {{ Request::is('users/index') ? 'open' : '' }}">
                          <a href="#">
                             <i class="glyphicon glyphicon-list"></i>Manage Users
@@ -176,6 +188,7 @@
                          </a>
                          <!-- Sub menu -->
                          <ul>
+
                             <li class="current"><a href="/payment_vouchers/receive_payment">Receive Payment</a></li>
                             <li><a href="/payment_vouchers/payment_voucher">Payment Voucher</a></li>
                             <li><a href="/payment_vouchers/journal_voucher">Journal Voucher</a></li>
