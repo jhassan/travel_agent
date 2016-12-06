@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+if(Auth::check())
+{
+  $user_permission = Auth::user()->user_permission;
+  $array_permission = explode(',',$user_permission);
+} 
+@endphp
 <div class="col-md-9">
 	<div class="content-box-large">
 		<div class="panel-heading">
@@ -21,7 +29,18 @@
 				@foreach($PermissionList as $list)
 					<tr class="odd gradeX" id="row_{{ $list->id }}">
 						<td>{{ $list->name }}</td>
-						<td class="center"><a href="/permissions/{{ $list->id }}/edit"><img src="/images/edit.png" alt="Edit"></a>&nbsp; &nbsp;<a id="{{ $list->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;"></a></td>
+						<td class="center">
+							@php
+                              if (in_array("23", $array_permission)){
+                            @endphp
+                              <a href="/permissions/{{ $list->id }}/edit"><img src="/images/edit.png" alt="Edit"></a>&nbsp; &nbsp;
+                            @php
+                            }
+                              if (in_array("25", $array_permission)){
+                            @endphp
+                              <a id="{{ $list->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;"></a>
+                            @php } @endphp
+						</td>
 					</tr>
 				@endforeach
 			</tbody>

@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+if(Auth::check())
+{
+  $user_permission = Auth::user()->user_permission;
+  $array_permission = explode(',',$user_permission);
+} 
+@endphp
 <div class="col-md-9">
 	<div class="content-box-large">
 		<div class="panel-heading">
@@ -27,8 +35,18 @@
 						<td>{{ $party->address }}</td>
 						<td>{{ $party->phone_no }}</td>
 						<td>@if($party->type_id == 1) Purchase Party @else Sale Party @endif</td>
-						<td class="center"><a href="/parties/{{ $party->id }}/edit"><img src="/images/edit.png" alt="Edit"></a>&nbsp; &nbsp;<a id="{{ $party->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;"></a></td>
-					</tr>
+						<td class="center">
+							@php
+                              if (in_array("23", $array_permission)){
+                            @endphp
+                              <a href="/parties/{{ $party->id }}/edit"><img src="/images/edit.png" alt="Edit"></a>&nbsp; &nbsp;
+                            @php
+                            }
+                              if (in_array("25", $array_permission)){
+                            @endphp
+                              <a id="{{ $party->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;"></a></td>
+                            @php } @endphp
+						</tr>
 				@endforeach
 			</tbody>
 			</table>

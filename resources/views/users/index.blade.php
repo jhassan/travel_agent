@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+if(Auth::check())
+{
+  $user_permission = Auth::user()->user_permission;
+  $array_permission = explode(',',$user_permission);
+} 
+@endphp
 <div class="col-md-9">
 	<div class="content-box-large">
 		<div class="panel-heading">
@@ -31,8 +38,18 @@
 						<td> xxxxxxxx </td>
 						<td>@if($user->user_type != '0') Client @else Admin @endif</td>
 						<td>{{ $user->user_permission }}</td>
-						<td class="center"><a href="/users/{{ $user->id }}/edit"><img src="/images/edit.png" alt="Edit"></a>&nbsp; &nbsp;<a id="{{ $user->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;"></a></td>
-					</tr>
+						<td class="center">
+							@php
+                              if (in_array("23", $array_permission)){
+                            @endphp
+                              <a href="/users/{{ $user->id }}/edit"><img src="/images/edit.png" alt="Edit"></a>&nbsp; &nbsp;
+                            @php
+                            }
+                              if (in_array("25", $array_permission)){
+                            @endphp
+                              <a id="{{ $user->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;"></a></td>
+                            @php } @endphp
+						</tr>
 				@endforeach
 			</tbody>
 			</table>

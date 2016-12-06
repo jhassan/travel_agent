@@ -80,10 +80,12 @@
             </div>
          </div>
     </div>
-@php 
-if (Auth::check())
+@php
+if(Auth::check())
+{
   $user_permission = Auth::user()->user_permission;
   $array_permission = explode(',',$user_permission);
+} 
 @endphp
 
     <div class="page-content">
@@ -121,8 +123,16 @@ if (Auth::check())
                          </a>
                          <!-- Sub menu -->
                          <ul>
+                            @php
+                              if (in_array("22", $array_permission)){
+                            @endphp
                             <li class="current"><a href="/users/add">Create User</a></li>
+                            @php
+                            }
+                              if (in_array("24", $array_permission)){
+                            @endphp
                             <li><a href="/users">Edit/View User</a></li>
+                            @php } @endphp
                         </ul>
                     </li>
                     <li class="submenu current {{ Request::is('parties') ? 'open' : '' }} {{ Request::is('parties/add') ? 'open' : '' }}">
@@ -132,8 +142,16 @@ if (Auth::check())
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/parties/add">Create Vendor/Client</a></li>
-                            <li><a href="/parties">View/Edit Vendor/Client</a></li>
+                            @php
+                              if (in_array("7", $array_permission)){
+                            @endphp
+                              <li class="current"><a href="/parties/add">Create Vendor/Client</a></li>
+                            @php
+                            }
+                              if (in_array("10", $array_permission)){
+                            @endphp
+                              <li><a href="/parties">View/Edit Vendor/Client</a></li>
+                            @php } @endphp
                         </ul>
                     </li>
                     <li class="submenu current {{ Request::is('vouchers') ? 'open' : '' }} {{ Request::is('vouchers/sale_voucher') ? 'open' : '' }} {{ Request::is('vouchers/list_sale_voucher') ? 'open' : '' }}">
@@ -143,9 +161,17 @@ if (Auth::check())
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/vouchers/sale_voucher">Create Sale Vouchers</a></li>
-                            <li class="current"><a href="/vouchers/list_sale_voucher">List Sale Vouchers</a></li>
-                        </ul>
+                            @php
+                              if (in_array("12", $array_permission)){
+                            @endphp
+                              <li class="current"><a href="/vouchers/sale_voucher">Create Sale Vouchers</a></li>
+                            @php
+                            }
+                              if (in_array("13", $array_permission)){
+                            @endphp
+                              <li class="current"><a href="/vouchers/list_sale_voucher">List Sale Vouchers</a></li>
+                            @php } @endphp
+                          </ul>
                     </li>
                     <li class="submenu current {{ Request::is('refund_vouchers') ? 'open' : '' }} {{ Request::is('refund_vouchers/refund_voucher') ? 'open' : '' }} {{ Request::is('refund_vouchers/list_refund_voucher') ? 'open' : '' }}">
                          <a href="#">
@@ -154,8 +180,16 @@ if (Auth::check())
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/refund_vouchers/refund_voucher">Create Refund Vouchers</a></li>
-                            <li class="current"><a href="/refund_vouchers/list_refund_voucher">List Refund Vouchers</a></li>
+                            @php
+                              if (in_array("15", $array_permission)){
+                            @endphp
+                              <li class="current"><a href="/refund_vouchers/refund_voucher">Create Refund Vouchers</a></li>
+                            @php
+                            }
+                              if (in_array("16", $array_permission)){
+                            @endphp
+                              <li class="current"><a href="/refund_vouchers/list_refund_voucher">List Refund Vouchers</a></li>
+                            @php } @endphp
                         </ul>
                     </li>
                     <li class="hide submenu current {{ Request::is('accounts') ? 'open' : '' }} {{ Request::is('accounts/frm_ledger') ? 'open' : '' }} {{ Request::is('accounts/view_ledger') ? 'open' : '' }} {{ Request::is('accounts/list_transections') ? 'open' : '' }}">
@@ -176,9 +210,13 @@ if (Auth::check())
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/reports/view_purchase_stock">Purchase Stock</a></li>
-                            <li><a href="/reports/view_sale_stock">Sale Stock</a></li>
-                            <li><a href="/reports/view_today_stock">Today Stock</a></li>
+                            
+                              <li class="current"><a href="/reports/view_purchase_stock">Purchase Stock</a></li>
+                            
+                              <li><a href="/reports/view_sale_stock">Sale Stock</a></li>
+                            
+                                <li><a href="/reports/view_today_stock">Today Stock</a></li>
+                            
                         </ul>
                     </li>
 
@@ -189,14 +227,23 @@ if (Auth::check())
                          </a>
                          <!-- Sub menu -->
                          <ul>
-
-                            <li class="current"><a href="/payment_vouchers/receive_payment">Receive Payment</a></li>
-                            <li><a href="/payment_vouchers/payment_voucher">Payment Voucher</a></li>
-                            <li><a href="/payment_vouchers/journal_voucher">Journal Voucher</a></li>
+                            @php
+                              if (in_array("18", $array_permission)){
+                            @endphp
+                              <li class="current"><a href="/payment_vouchers/receive_payment">Receive Payment</a></li>
+                            @php
+                            }
+                              if (in_array("19", $array_permission)){
+                            @endphp
+                              <li><a href="/payment_vouchers/payment_voucher">Payment Voucher</a></li>
+                            @php 
+                            } 
+                              if (in_array("20", $array_permission)){
+                            @endphp
+                              <li><a href="/payment_vouchers/journal_voucher">Journal Voucher</a></li>
+                            @php  } @endphp
                         </ul>
                     </li>
-
-                    
 
                     <li class="submenu current {{ Request::is('permissions/add') ? 'open' : '' }} {{ Request::is('permissions/index') ? 'open' : '' }}">
                          <a href="#">
@@ -205,8 +252,16 @@ if (Auth::check())
                          </a>
                          <!-- Sub menu -->
                          <ul>
-                            <li class="current"><a href="/permissions/add">Create Permission</a></li>
-                            <li><a href="/permissions">Edit/View Permission</a></li>
+                            @php
+                              if (in_array("27", $array_permission)){
+                            @endphp
+                              <li class="current"><a href="/permissions/add">Create Permission</a></li>
+                            @php
+                            }
+                              if (in_array("29", $array_permission)){
+                            @endphp
+                              <li><a href="/permissions">Edit/View Permission</a></li>
+                            @php } @endphp
                         </ul>
                     </li>
 

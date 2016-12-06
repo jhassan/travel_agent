@@ -92,8 +92,7 @@ class UserController extends Controller
             'name'  => 'required|unique:parties|max:100',
             'phone_no'  => 'unique:parties|max:12',
             'user_type'  => 'required',
-            'email'  => 'required',
-            'password'  => 'required',
+            'email'  => 'required'
     );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -103,6 +102,11 @@ class UserController extends Controller
         }
         $data = new User();
 
+        if(empty(Input::get('password'))){
+            $pass = Auth::user()->password;
+        }else{
+            $pass = bcrypt(Input::get('password'));
+        }
         $permission_checked = Input::get('permission');
         $arrayChickList = implode(',', $permission_checked);
 
@@ -110,7 +114,7 @@ class UserController extends Controller
         $data->user_phone_no = Input::get('user_phone_no');
         $data->user_type = Input::get('user_type');
         $data->email = Input::get('email');
-        $data->password = bcrypt(Input::get('password'));
+        $data->password = $pass;
         $data->user_permission = $arrayChickList;
 
 
