@@ -59,8 +59,9 @@
   					</div>
 				</div>
 
-				<div class="form-group col-sm-3 pull-right" style=" margin-top: 20px;">
-			      <span class="btn btn-primary checkedBtn pull-right">Check All</span>
+				<div class="clear"></div>
+				<div class="form-group col-sm-3 pull-left" style=" margin-top: 20px;">
+			      <input type="checkbox" id="checkAll"/> <label style="font-size: 14px;">Check All</label>
 			    </div>
 				<div class="clear"></div>
 
@@ -109,8 +110,19 @@
 		    	return false;
 		    }
 	    });
-	    $('.checkedBtn').click(function () {  
-		    $('.checkedAll').attr( 'checked', 'checked' );
+	 //    $('.checkedBtn').click(function () {  
+		//     $('.checkedAll').attr( 'checked', 'checked' );
+		// });
+		$("#checkAll").change(function () {
+		    $("input:checkbox.checkedAll").prop('checked', $(this).prop("checked"));
+		});
+		$(".cb-element").change(function () {
+				_tot = $(".cb-element").length						  
+				_tot_checked = $(".checkedAll:checked").length;
+				
+				if(_tot != _tot_checked){
+					$("#checkAll").prop('checked',false);
+				}
 		});
 	});
 	</script>

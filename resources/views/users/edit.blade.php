@@ -37,7 +37,7 @@
 					<input class="form-control" placeholder="Password" id="password" name="password" type="password" value="">
 				</div>
 
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-3 hide">
 					<label>Re-type Password</label>
 					<input class="form-control" placeholder="Re-type Password" id="re_type_Password" name="re_type_Password" type="password" value="">
 					<span id="pass_error" class="hidden text-danger">Passwords do not match</span>
@@ -59,9 +59,9 @@
 						</div>
   					</div>
 				</div>
-
-				<div class="form-group col-sm-3 pull-right" style=" margin-top: 20px;">
-			      <span class="btn btn-primary checkedBtn pull-right">Check All</span>
+				<div class="clear"></div>
+				<div class="form-group col-sm-3 pull-left" style=" margin-top: 20px;">
+			      <input checked="checked" type="checkbox" id="checkAll"/> <label style="font-size: 14px;">Check All</label>
 			    </div>
 				<div class="clear"></div>
 
@@ -114,8 +114,16 @@
 		    	return false;
 		    }
 	    });
-	    $('.checkedBtn').click(function () {  
-		    $('.checkedAll').attr( 'checked', 'checked' );
+		$("#checkAll").change(function () {
+		    $("input:checkbox.checkedAll").prop('checked', $(this).prop("checked"));
+		});
+		$(".cb-element").change(function () {
+				_tot = $(".cb-element").length						  
+				_tot_checked = $(".checkedAll:checked").length;
+				
+				if(_tot != _tot_checked){
+					$("#checkAll").prop('checked',false);
+				}
 		});
 	});
 	</script>

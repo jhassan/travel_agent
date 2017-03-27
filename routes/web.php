@@ -138,6 +138,8 @@ Route::group(
       Route::get('{id}/edit', array('as' => 'users.update', 'uses' => 'UserController@edit'));
       Route::post('{id}/edit', 'UserController@update');
       Route::get('delete_user', array('as'=>'delete_user', 'uses' => 'UserController@destroy'));
+      Route::get('view_permissions', array('as'=>'view_permissions', 'uses' => 'UserController@view_permissions'));
+      
   });
 
 

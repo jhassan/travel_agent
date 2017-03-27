@@ -144,4 +144,17 @@ class UserController extends Controller
             echo "sorry";
     }
 
+    // view_permissions
+    public function view_permissions()
+    {
+        $user_id = Input::get('ID');
+        $data = new User;
+        $patentPermission = $data->all_parent_permission();
+        $childPermission = $data->all_child_permission();
+        $user_permission =  $data->user_permissions($user_id);
+        $user = DB::table('users')->where('id', $user_id)->first();
+        //print_r($users);die;
+        return View('dialogs.show_permissions',compact('user','patentPermission','childPermission','user_permission'));
+    }
+
 }
