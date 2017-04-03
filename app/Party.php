@@ -23,10 +23,20 @@ class Party extends Model
 		$arrayCoa = DB::table('coa')
 					  ->where('coa_code', DB::raw("(select max(`coa_code`) from coa where coa_code like '".$value."%')"))
 					  ->get();
+					 // var_dump($arrayCoa); 
 					  //print_r($arrayCoa[0]->coa_code);die;
-		$coa = $arrayCoa[0]->coa_code;
-//print_r($coa); die;
-		return $coa + 1;			  
+		//$coa = $arrayCoa[0]->coa_code;
+		if(empty($arrayCoa[0]))
+        {
+          $max = 1;
+          $max = $this->number_pad($max,3);
+          $max = $value.$max;  
+        } 
+        else
+        {
+			$max = $arrayCoa[0]->coa_code;
+        }
+        return $max;			  
 	}
 
 	// All party with COA code
@@ -39,4 +49,8 @@ class Party extends Model
 						->get();
 		return $arrayPartyCoa;						
 	}
+
+	public function number_pad($number,$n) {
+        return str_pad((int) $number,$n,"0",STR_PAD_LEFT);
+    }
 }

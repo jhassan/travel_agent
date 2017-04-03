@@ -42,7 +42,8 @@ class PartyController extends Controller
         $rules = array(
             'name'  => 'required|unique:parties|max:100',
             'phone_no'  => 'unique:parties|max:12',
-			'account_id'  => 'required'
+			'account_id'  => 'required',
+            'type_id'  => 'required'
         );
 //print_r(Input::all());die;
         // Create a new validator instance from our validation rules
@@ -89,6 +90,11 @@ class PartyController extends Controller
         elseif($data->account_id == 500000)
         {
             $coa_code = $party->get_next_coa('500');
+            // $account_type = 'p';
+        }
+        elseif($data->account_id == 600000)
+        {
+            $coa_code = $party->get_next_coa('600');
             // $account_type = 'p';
         }
         else
@@ -202,7 +208,7 @@ class PartyController extends Controller
         $data->name = Input::get('name');
 		$data->code = Input::get('code');
 		$data->ptcl_no = Input::get('ptcl_no');
-		$data->email = Input::get('email');
+		$data->email = Input::get('email_address');
 		$data->account_id = Input::get('account_id');
         $data->address = Input::get('address');
         $data->phone_no = Input::get('phone_no');
@@ -246,8 +252,8 @@ class PartyController extends Controller
         $removeParty = Party::where('id', '=', $DelID)->delete();
         $ID = Party::where('id', '=', $DelID)->first();
         if ($ID === null) 
-           echo "delete"; 
+           echo "2"; 
         else
-            echo "sorry";
+            echo "1";
     }
 }

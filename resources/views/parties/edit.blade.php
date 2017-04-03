@@ -65,6 +65,7 @@
                           <div data-value="300000">Vender/Payable</div>
                           <div data-value="400000">Expence</div>
                           <div data-value="500000">Profit &amp; loss</div>
+                          <div data-value="600000">General</div>
 						</div>
   					</div>
 				</div>
@@ -75,8 +76,8 @@
 						<div class="bfh-selectbox" data-name="type_id" data-value="{{ $parties->type_id }}" data-filter="true">
 						  <input type="hidden" name="type_id" value="{{ $parties->type_id }}">
 						  <div data-value="">Select Party Type</div>
-						  <div data-value="1">Purchase Party</div>
-						  <div data-value="2">Sale Party</div>
+						  <div data-value="1">Client</div>
+						  <div data-value="2">Vendor</div>
 						</div>
   					</div>
 				</div>

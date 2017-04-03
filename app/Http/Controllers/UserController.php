@@ -139,9 +139,9 @@ class UserController extends Controller
         $removeParty = User::where('id', '=', $DelID)->delete();
         $ID = User::where('id', '=', $DelID)->first();
         if ($ID === null) 
-           echo "delete"; 
+           echo "2"; 
         else
-            echo "sorry";
+            echo "1";
     }
 
     // view_permissions

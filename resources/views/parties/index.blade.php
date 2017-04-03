@@ -34,7 +34,7 @@ if(Auth::check())
 						<td>{{ $party->name }}</td>
 						<td>{{ $party->address }}</td>
 						<td>{{ $party->phone_no }}</td>
-						<td>@if($party->type_id == 1) Purchase Party @else Sale Party @endif</td>
+						<td>@if($party->type_id == 1) Client @else Vendor @endif</td>
 						<td class="center">
 							@php
                               if (in_array("23", $array_permission)){
@@ -44,7 +44,7 @@ if(Auth::check())
                             }
                               if (in_array("25", $array_permission)){
                             @endphp
-                              <a id="{{ $party->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;"></a></td>
+                              <a id="{{ $party->id }}" class="deleteRecord"><img src="/images/delete.png" alt="Delete" style="cursor:pointer;" data-target="#myModal" data-toggle="modal"></a></td>
                             @php } @endphp
 						</tr>
 				@endforeach
@@ -54,8 +54,21 @@ if(Auth::check())
 		</div>
 	</div>
 </div>
-<div id="dialog-confirm-delete" title="Delete Reocrs" style="display:none;">Do you want to delete this record?</div>
-@endsection
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">Do you want to delete this record?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" id="deleteRecord">Delete</button>
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <input type="hidden" id="currentID" value="" />
+    @endsection
 
 @section('custom_js')
 
@@ -65,37 +78,61 @@ if(Auth::check())
 	
 	<script type="text/javascript">
 	$(document).ready(function() {
+		// Get Delete Record ID
+		$(document).on('click','.deleteRecord',function(e){
+			var DelID = jQuery(this).attr("id");
+			$("#currentID").val(DelID);
+		});
 	    $('#example').dataTable();
-	    $(document).on('click','.deleteRecord',function(e){
-				var DelID = jQuery(this).attr("id");
-				var token = $('input[name="_token"]').val();
-				$("#dialog-confirm-delete").dialog({
-								resizable: false,
-								height:170,
-								width: 400,
-								modal: true,
-								title: 'Delete Party',
-								buttons: {
-									Delete: function() {
-										$(this).dialog('close');
-										$.ajax({
-                          type: "GET",
-                      				url: '/parties/delete_party',
-                          data: { DelID: DelID }
-                      }).done(function( msg ) {
-                          //alert( msg+'ttttt' );
-                          if(msg == "delete")
-                            $("#row_"+DelID).remove();
-                      });
-									},
-									Cancel: function() {
-									   $(this).dialog('close');
-									}
-								}
-							});
+	    // Delete Record show Dialog Box
+		$(document).on('click','#deleteRecord',function(e){
+			var DelID = $("#currentID").val();
+			var token = $('input[name="_token"]').val();
+			jQuery.ajax({
+				type: "GET",
+				url: "/parties/delete_party",
+				data: {DelID : DelID},
+				cache: false,
+				success: function(response)
+				{
+					if(response == "2")
+					{
+						jQuery("#row_"+DelID).hide();	
+						$("#myModal").modal('hide');
+					}
+				}
+			});
+		});
+	   //  $(document).on('click','.deleteRecord',function(e){
+				// var DelID = jQuery(this).attr("id");
+				// var token = $('input[name="_token"]').val();
+				// $("#dialog-confirm-delete").dialog({
+				// 				resizable: false,
+				// 				height:170,
+				// 				width: 400,
+				// 				modal: true,
+				// 				title: 'Delete Party',
+				// 				buttons: {
+				// 					Delete: function() {
+				// 						$(this).dialog('close');
+				// 						$.ajax({
+    //                       type: "GET",
+    //                   				url: '/parties/delete_party',
+    //                       data: { DelID: DelID }
+    //                   }).done(function( msg ) {
+    //                       //alert( msg+'ttttt' );
+    //                       if(msg == "delete")
+    //                         $("#row_"+DelID).remove();
+    //                   });
+				// 					},
+				// 					Cancel: function() {
+				// 					   $(this).dialog('close');
+				// 					}
+				// 				}
+				// 			});
 									   
-						return false;
-						});
+				// 		return false;
+				// 		});
 	} );
 	</script>
 @endsection
